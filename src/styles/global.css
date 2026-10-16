@@ -214,3 +214,17 @@ img {
   border-radius: 5px;
   white-space: nowrap;
 }
+
+/* Telas grandes: as imagens ficam mais largas que a coluna de texto */
+@media (min-width: 72rem) {
+  .prosa {
+    --largura-imagem: min(64rem, calc(100vw - 6rem));
+  }
+  .prosa img:not(.quadro img, .retrato),
+  .prosa figure.interface {
+    width: var(--largura-imagem);
+    max-width: none;
+    margin-left: calc((100% - var(--largura-imagem)) / 2);
+    margin-right: 0;
+  }
+}

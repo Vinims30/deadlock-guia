@@ -9,13 +9,20 @@
 
   const dialogo = document.querySelector<HTMLDialogElement>('dialog.ampliar');
 
-  // Monta a imagem grande do zero, no maior tamanho que cabe na tela
-  function abrir(src: string, alt: string, largura: number, altura: number, destaques = '') {
+  // Monta a imagem grande do zero, no maior tamanho que cabe na tela.
+  // No celular em pé, uma imagem deitada ficaria do tamanho da página; então ela
+  // aparece com 70% da altura da tela e dá para arrastar para os lados.
+  function abrir(src: string, alt: string, largura: number, altura: number, destaques = '', centroX = 50) {
     if (!dialogo) return;
+    const proporcao = largura / altura;
+    const celularEmPe = innerWidth < innerHeight && innerWidth < 800 && proporcao > 1.2;
     const caixa = document.createElement('div');
     caixa.className = 'ampliada';
     caixa.style.aspectRatio = `${largura} / ${altura}`;
-    caixa.style.width = `min(95vw, calc(95vh * ${largura / altura}))`;
+    caixa.style.width = celularEmPe
+      ? `${Math.min(innerHeight * 0.7 * proporcao, largura)}px`
+      : `min(95vw, calc(95vh * ${proporcao}))`;
+    dialogo.classList.toggle('arrastar', celularEmPe);
 
     const img = document.createElement('img');
     img.src = src;
@@ -25,6 +32,8 @@
 
     dialogo.replaceChildren(caixa);
     dialogo.showModal();
+    // Começa mostrando o destaque
+    if (celularEmPe) dialogo.scrollLeft = (caixa.offsetWidth * centroX) / 100 - innerWidth / 2;
   }
 
   // Imagens comuns
@@ -40,7 +49,9 @@
     quadro.addEventListener('click', () => {
       const { ampliar = '', largura = '16', altura = '9', areas = '[]' } = quadro.dataset;
       const alt = quadro.querySelector('img')?.alt ?? '';
-      abrir(ampliar, alt, Number(largura), Number(altura), desenharDestaques(JSON.parse(areas)));
+      const lista = JSON.parse(areas) as { x: number; l: number }[];
+      const centroX = lista.length ? lista.reduce((soma, a) => soma + a.x + a.l / 2, 0) / lista.length : 50;
+      abrir(ampliar, alt, Number(largura), Number(altura), desenharDestaques(JSON.parse(areas)), centroX);
     });
   });
 
@@ -57,6 +68,11 @@
     background: transparent;
     overflow: visible;
     cursor: zoom-out;
+  }
+  .ampliar.arrastar {
+    max-width: 100vw;
+    overflow-x: auto;
+    overscroll-behavior: contain;
   }
   .ampliar::backdrop {
     background: rgb(10 8 6 / 0.88);
