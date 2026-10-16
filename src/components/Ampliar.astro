@@ -48,7 +48,7 @@
   document.querySelectorAll<HTMLElement>('.prosa .quadro').forEach((quadro) => {
     quadro.addEventListener('click', () => {
       const { ampliar = '', largura = '16', altura = '9', areas = '[]' } = quadro.dataset;
-      const alt = quadro.querySelector('img')?.alt ?? '';
+      const alt = quadro.getAttribute('aria-label') ?? '';
       const lista = JSON.parse(areas) as { x: number; l: number }[];
       const centroX = lista.length ? lista.reduce((soma, a) => soma + a.x + a.l / 2, 0) / lista.length : 50;
       abrir(ampliar, alt, Number(largura), Number(altura), desenharDestaques(JSON.parse(areas)), centroX);
@@ -79,6 +79,8 @@
   }
   .ampliar :global(.ampliada) {
     position: relative;
+    overflow: hidden;
+    border-radius: 8px;
   }
   .ampliar :global(.ampliada img) {
     display: block;

@@ -1,23 +1,34 @@
 import type { Area } from '../data/interface';
 
-// Desenha a camada escura com "buracos" nas áreas destacadas e o contorno laranja.
-// Devolve o SVG como texto para poder ser usado tanto na página quanto no zoom.
-// O escuro é um só caminho com fill-rule="evenodd": o retângulo da tela inteira
-// menos as áreas, então não precisa de máscara nem de ids.
-export function desenharDestaques(areas: Area[]): string {
-  if (areas.length === 0) return '';
+type Recorte = { x: number; y: number; l: number; a: number };
 
-  const forma = (a: Area) => {
-    if (!a.elipse) return `M${a.x} ${a.y}h${a.l}v${a.a}h${-a.l}Z`;
-    const rx = a.l / 2;
-    const ry = a.a / 2;
-    const cy = a.y + ry;
-    return `M${a.x} ${cy}a${rx} ${ry} 0 1 0 ${a.l} 0a${rx} ${ry} 0 1 0 ${-a.l} 0Z`;
-  };
-
-  const buracos = areas.map(forma).join('');
-  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
-    <path d="M0 0H100V100H0Z${buracos}" fill="#080604" fill-opacity="0.62" fill-rule="evenodd"/>
-    <path d="${buracos}" fill="none" stroke="#e08a2c" stroke-width="3" vector-effect="non-scaling-stroke"/>
-  </svg>`;
+// Desenha o destaque: um contorno laranja em volta de cada área e o resto da
+// imagem escurecido. Devolve HTML como texto para ser usado tanto na página
+// quanto no zoom. O elemento onde ele entra precisa de position: relative e
+// overflow: hidden (o escuro é uma sombra enorme que o overflow corta).
+//
+// Por que não SVG: com a placa de vídeo ligada, o Chromium deixava em branco
+// as imagens deste capítulo quando o escuro era desenhado com SVG.
+//
+// Limite: com mais de uma área, a sombra de uma escurece a outra. Por isso os
+// capítulos usam um destaque por imagem.
+export function desenharDestaques(areas: Area[], recorte: Recorte = { x: 0, y: 0, l: 100, a: 100 }): string {
+  const n = (v: number) => Math.round(v * 100) / 100;
+  return areas
+    .map((a) => {
+      const estilo = [
+        'position:absolute',
+        `left:${n(((a.x - recorte.x) / recorte.l) * 100)}%`,
+        `top:${n(((a.y - recorte.y) / recorte.a) * 100)}%`,
+        `width:${n((a.l / recorte.l) * 100)}%`,
+        `height:${n((a.a / recorte.a) * 100)}%`,
+        `border-radius:${a.elipse ? '50%' : '4px'}`,
+        'border:3px solid #e08a2c',
+        'box-sizing:border-box',
+        'box-shadow:0 0 0 200vmax rgb(8 6 4 / 0.62)',
+        'pointer-events:none',
+      ].join(';');
+      return `<span aria-hidden="true" style="${estilo}"></span>`;
+    })
+    .join('');
 }

@@ -59,23 +59,31 @@ if (aproximar && marcadas.length > 0) {
     };
   }
 }
-const posicao = `width: ${10000 / recorte.l}%; height: ${10000 / recorte.a}%; left: ${(-recorte.x * 100) / recorte.l}%; top: ${(-recorte.y * 100) / recorte.a}%`;
-const proporcaoQuadro = `${recorte.l * W} / ${recorte.a * H}`;
+// O recorte é feito com a imagem de fundo do quadro (tamanho e posição em %),
+// sem criar um elemento gigante: imagens enormes escondidas pelo overflow
+// fazem o Chromium com placa de vídeo desenhar pedaços errados.
+const posicaoX = recorte.l < 100 ? (recorte.x / (100 - recorte.l)) * 100 : 0;
+const posicaoY = recorte.a < 100 ? (recorte.y / (100 - recorte.a)) * 100 : 0;
+const fundo = [
+  `aspect-ratio: ${recorte.l * W} / ${recorte.a * H}`,
+  `background-image: url("${imagem.src}")`,
+  `background-size: ${10000 / recorte.l}% ${10000 / recorte.a}%`,
+  `background-position: ${posicaoX}% ${posicaoY}%`,
+].join('; ');
 ---
 
 <figure class="interface">
   <div
     class="quadro"
-    style={`aspect-ratio: ${proporcaoQuadro}`}
+    role="img"
+    aria-label={legenda ?? 'A tela do jogo'}
+    style={fundo}
     data-ampliar={imagem.src}
     data-largura={imagem.width}
     data-altura={imagem.height}
     data-areas={JSON.stringify(marcadas)}
   >
-    <div class="tela" style={posicao}>
-      <img src={imagem.src} width={imagem.width} height={imagem.height} alt={legenda ?? 'A tela do jogo'} />
-      <Fragment set:html={desenharDestaques(marcadas)} />
-    </div>
+    <Fragment set:html={desenharDestaques(marcadas, recorte)} />
   </div>
   {legenda && <figcaption>{legenda}</figcaption>}
 </figure>
@@ -92,13 +100,8 @@ const proporcaoQuadro = `${recorte.l * W} / ${recorte.a * H}`;
     box-shadow: 0 8px 24px var(--sombra);
     cursor: zoom-in;
   }
-  .tela {
-    position: absolute;
-  }
-  .tela img {
-    display: block;
-    width: 100%;
-    height: 100%;
+  .quadro {
+    background-repeat: no-repeat;
   }
   figcaption {
     margin-top: 0.6rem;
