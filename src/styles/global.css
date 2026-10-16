@@ -158,7 +158,8 @@ img {
   border: 1px solid var(--borda);
 }
 
-.prosa img {
+/* As imagens com destaque (componente Interface) têm o próprio estilo */
+.prosa img:not(.quadro img) {
   display: block;
   margin: 2rem auto;
   border-radius: 8px;
@@ -194,4 +195,22 @@ img {
 .safira {
   color: var(--safira);
   font-weight: 600;
+}
+
+/* Teclas: <kbd>Q</kbd> */
+.prosa kbd {
+  display: inline-block;
+  min-width: 1.8em;
+  padding: 0.1em 0.45em;
+  font-family: var(--fonte-texto);
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  white-space: nowrap;
 }

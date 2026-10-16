@@ -1,0 +1,37 @@
+---
+// Lembrete do que ainda falta (um print, algo para conferir no jogo).
+// Só aparece no "npm run dev". No site publicado ele some.
+interface Props {
+  tipo?: 'print' | 'conferir';
+}
+const { tipo = 'print' } = Astro.props;
+const rotulo = tipo === 'print' ? '📸 Print necessário' : '🔎 Conferir no jogo';
+---
+
+{
+  import.meta.env.DEV && (
+    <aside class="pendente">
+      <strong>{rotulo}</strong>
+      <slot />
+    </aside>
+  )
+}
+
+<style>
+  .pendente {
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+    border: 2px dashed var(--ambar);
+    border-radius: 8px;
+    color: var(--texto);
+    font-size: 0.95rem;
+  }
+  .pendente strong {
+    display: block;
+    color: var(--ambar);
+    margin-bottom: 0.25rem;
+  }
+  .pendente :global(p) {
+    margin: 0.25rem 0;
+  }
+</style>

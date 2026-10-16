@@ -41,6 +41,18 @@ Depois abra <http://localhost:4321/deadlock-guia/>. A página atualiza sozinha s
 
 Para destacar os times no texto, use `<span class="ambar">Amber Hand</span>` e `<span class="safira">Sapphire Flame</span>`.
 
+## Recursos extras nos capítulos (arquivos `.mdx`)
+
+Capítulos que terminam em `.mdx` podem usar componentes. Importe no começo do arquivo, logo depois do cabeçalho:
+
+```mdx
+import Interface from '../../../components/Interface.astro';
+import Pendente from '../../../components/Pendente.astro';
+```
+
+- `<Interface destaque="minimapa" legenda="O minimapa" />` mostra a tela do jogo com uma parte em destaque. As áreas disponíveis e a imagem usada ficam em `src/data/interface.ts`.
+- `<Pendente>texto</Pendente>` marca um print que falta. Com `tipo="conferir"`, marca algo para conferir no jogo. Só aparece no `npm run dev` e some no site publicado.
+
 ## Publicação
 
 O repositório é privado por enquanto. Quando o site estiver pronto:

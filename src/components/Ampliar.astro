@@ -2,20 +2,34 @@
 // Clicar numa imagem do capítulo abre ela em tela cheia (como no Writebook)
 ---
 
-<dialog class="ampliar" aria-label="Imagem ampliada">
-  <img alt="" />
-</dialog>
+<dialog class="ampliar" aria-label="Imagem ampliada"></dialog>
 
 <script>
   const dialogo = document.querySelector<HTMLDialogElement>('dialog.ampliar');
-  const grande = dialogo?.querySelector('img');
 
+  function abrir(conteudo: HTMLElement) {
+    if (!dialogo) return;
+    dialogo.replaceChildren(conteudo);
+    dialogo.showModal();
+  }
+
+  // Imagens comuns: mostra só a imagem
   document.querySelectorAll<HTMLImageElement>('.prosa img').forEach((img) => {
+    if (img.closest('.quadro')) return;
     img.addEventListener('click', () => {
-      if (!dialogo || !grande) return;
+      const grande = document.createElement('img');
       grande.src = img.currentSrc || img.src;
       grande.alt = img.alt;
-      dialogo.showModal();
+      abrir(grande);
+    });
+  });
+
+  // Imagens com destaque (componente Interface): amplia a imagem junto com o destaque
+  document.querySelectorAll<HTMLElement>('.prosa .quadro').forEach((quadro) => {
+    quadro.addEventListener('click', () => {
+      const copia = quadro.cloneNode(true) as HTMLElement;
+      copia.classList.add('quadro-ampliado');
+      abrir(copia);
     });
   });
 
@@ -30,16 +44,22 @@
     padding: 0;
     border: none;
     background: transparent;
+    overflow: hidden;
     cursor: zoom-out;
   }
   .ampliar::backdrop {
     background: rgb(10 8 6 / 0.88);
   }
   /* Ocupa a tela toda e encaixa a imagem sem distorcer */
-  .ampliar img {
+  .ampliar :global(> img) {
     display: block;
     width: 95vw;
     height: 95vh;
     object-fit: contain;
+  }
+  /* Imagem com destaque: o maior tamanho que cabe na tela mantendo a proporção */
+  .ampliar :global(.quadro-ampliado) {
+    width: min(95vw, calc(95vh * var(--proporcao, 1.7778)));
+    cursor: zoom-out;
   }
 </style>

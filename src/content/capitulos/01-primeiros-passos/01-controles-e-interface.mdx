@@ -1,0 +1,131 @@
+---
+titulo: "Controles e interface"
+resumo: "O que cada parte da tela mostra e quais teclas usar."
+---
+
+import Interface from '../../../components/Interface.astro';
+import Pendente from '../../../components/Pendente.astro';
+
+Na primeira partida a tela parece cheia de informação. Você não precisa entender tudo de uma vez: algumas partes você vai olhar o tempo todo e outras só de vez em quando. Este capítulo mostra o que é cada coisa e quais teclas usar.
+
+<Pendente>
+  Um print da tela durante uma partida, sem nenhum menu aberto. Se der, com um inimigo à vista (para aparecer a barra de vida dele) e com alguma habilidade em recarga. Ele vai substituir o esquema provisório de todas as imagens deste capítulo.
+</Pendente>
+
+<Interface legenda="A tela durante uma partida" />
+
+## A interface
+
+### Os times, no topo
+
+<Interface destaque="times" legenda="Os dois times e o relógio da partida" />
+
+No topo ficam os retratos dos **12 heróis da partida**: os 6 do seu time de um lado e os 6 do time inimigo do outro. No meio fica o **relógio**, que mostra há quanto tempo a partida está rolando. Vários eventos acontecem em horários marcados (você vai ver isso em *Eventos da partida*), então vale a pena dar uma olhada no relógio de vez em quando.
+
+Quando alguém morre, o retrato fica apagado até a pessoa renascer. Isso responde uma pergunta importante: **quantos inimigos estão vivos agora?** Se três inimigos acabaram de morrer, é uma ótima hora para o seu time atacar um objetivo.
+
+<Pendente tipo="conferir">
+  Confirmar se o retrato de quem morreu mostra o tempo até renascer.
+</Pendente>
+
+### Sua vida
+
+<Interface destaque="vida" legenda="Sua barra de vida" />
+
+A barra de vida mostra quanto dano você ainda aguenta. Se ela chegar a zero, você morre e precisa esperar um tempo para renascer na base. Por isso, **recuar com pouca vida não é covardia, é estratégia**: morrer custa tempo e dá souls para o inimigo.
+
+### Stamina, perto da mira
+
+<Interface destaque="stamina" legenda="A mira e a stamina logo abaixo dela" />
+
+Os tracinhos logo abaixo da mira são a sua **stamina**. Cada dash ou pulo extra gasta um tracinho, e eles voltam sozinhos com o tempo. Se a stamina acabar, você fica sem como fugir rápido. Então, guardar pelo menos um tracinho para escapar é um bom hábito.
+
+<Pendente tipo="conferir">
+  Confirmar se a stamina continua aparecendo embaixo da mira depois da atualização de 29/09.
+</Pendente>
+
+### As habilidades
+
+<Interface destaque="habilidades" legenda="As quatro habilidades do seu herói" />
+
+Cada herói tem **quatro habilidades**, usadas com as teclas <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>. A quarta é a **ultimate**, a mais forte, que demora mais para recarregar.
+
+As habilidades **não gastam mana nem energia**. Depois de usar uma, ela entra em **recarga**: o ícone escurece e mostra um contador até poder ser usada de novo. No começo da partida nem todas estão liberadas. Você vai desbloqueando e melhorando cada uma ao longo do jogo (mais sobre isso em *Heróis e habilidades*).
+
+### Os itens ativos
+
+<Interface destaque="itens" legenda="Os espaços dos itens ativos" />
+
+Alguns itens que você compra na loja têm um efeito que precisa ser acionado, como uma cura ou um pulo extra. Esses são os **itens ativos**, usados com <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>. A maioria dos itens é **passiva**: ela funciona sozinha e não aparece aqui.
+
+### Suas souls
+
+<Interface destaque="souls" legenda="Quantas souls você tem" />
+
+Este número mostra quantas **souls** você tem. Souls são a moeda do jogo: você ganha souls matando tropas, monstros e heróis inimigos e gasta na loja. Elas também fazem o seu herói ficar mais forte sozinhas, e é por isso que elas são tão importantes. O capítulo *Souls: dinheiro e nível* explica isso direitinho.
+
+### O minimapa
+
+<Interface destaque="minimapa" legenda="O minimapa" />
+
+O minimapa é um desenho do mapa inteiro visto de cima. Nele aparecem você, o seu time, as tropas, as torres de cada lane e os inimigos que alguém do seu time está vendo.
+
+Olhar o minimapa é um hábito que separa jogadores novos dos experientes. Uma regra simples: **se você não vê no minimapa um inimigo que estava na sua lane, ele pode estar vindo te pegar de surpresa.**
+
+### As barras de vida em cima dos heróis
+
+<Interface destaque="barra-inimiga" legenda="A barra de vida de um inimigo" />
+
+Todo herói tem uma barra de vida flutuando em cima da cabeça. Ela mostra mais do que a vida:
+
+- **Azul-claro** no fim da barra é **escudo**, uma vida extra temporária que some antes da vida de verdade.
+- **Verde** é a cura que o herói está recebendo.
+- **Um ícone de olho** mostra se a **ultimate** dele está pronta (olho aberto) ou em recarga (olho fechado). Um inimigo de olho aberto ainda tem a habilidade mais forte guardada.
+- **Setinhas (›)** em cima da barra mostram a **stamina**. Para os inimigos elas só aparecem por alguns segundos depois de um dash. Se ele acabou de gastar tudo, não tem como fugir.
+
+## As teclas
+
+Estas são as teclas padrão. Você pode trocar qualquer uma em **Configurações → Teclas**. Não precisa decorar tudo antes de jogar: comece pelas de movimento e pelas habilidades, o resto vem com o tempo.
+
+### Movimento
+
+| Tecla | O que faz |
+| --- | --- |
+| <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Andar |
+| <kbd>Espaço</kbd> | Pular. No ar, aperte de novo para o pulo duplo |
+| <kbd>Shift</kbd> | Dash, um impulso rápido na direção em que você está andando |
+| <kbd>Ctrl</kbd> | Agachar. Correndo, faz o herói deslizar |
+
+### Combate
+
+| Tecla | O que faz |
+| --- | --- |
+| Botão esquerdo do mouse | Atirar |
+| Botão direito do mouse | Mirar com zoom |
+| <kbd>R</kbd> | Recarregar |
+| <kbd>Q</kbd> | Ataque corpo a corpo (melee). Toque para o leve, segure para o pesado |
+| <kbd>F</kbd> | Parry, que bloqueia o melee do inimigo |
+
+### Habilidades e itens
+
+| Tecla | O que faz |
+| --- | --- |
+| <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> | Usar as habilidades (a 4 é a ultimate) |
+| <kbd>Alt</kbd> + <kbd>1</kbd>–<kbd>4</kbd> | Melhorar uma habilidade |
+| <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd> | Usar os itens ativos |
+
+### Loja e comunicação
+
+| Tecla | O que faz |
+| --- | --- |
+| <kbd>B</kbd> | Abrir a loja |
+| <kbd>Tab</kbd> | Placar, com as souls e os itens de todo mundo |
+| Rodinha do mouse | Ping, para marcar algo para o time |
+| <kbd>Enter</kbd> | Chat do time |
+| <kbd>Shift</kbd> + <kbd>Enter</kbd> | Chat para todos, incluindo os inimigos |
+
+<Pendente tipo="conferir">
+  Confirmar no jogo (Configurações → Teclas): melhorar habilidade com Alt + número, o ping na rodinha do mouse e o zoom no botão direito. As fontes que achei não concordam entre si sobre essas três.
+</Pendente>
+
+> **Dica:** o <kbd>Tab</kbd> é um dos atalhos mais úteis para quem está começando. Ele mostra quem está ganhando em souls e o que cada inimigo comprou.

@@ -1,0 +1,101 @@
+---
+// Mostra a imagem da tela do jogo escurecida, com só as áreas pedidas em destaque.
+// Uso no capítulo (.mdx):  <Interface destaque="minimapa" legenda="O minimapa" />
+// Vários destaques:        <Interface destaque={['vida', 'stamina']} />
+// Sem destaque mostra a tela inteira.
+import { areas, imagemTela } from '../data/interface';
+
+interface Props {
+  destaque?: string | string[];
+  legenda?: string;
+}
+
+const { destaque = [], legenda } = Astro.props;
+const nomes = Array.isArray(destaque) ? destaque : [destaque];
+const marcadas = nomes.map((nome) => {
+  const area = areas[nome];
+  if (!area) throw new Error(`Área "${nome}" não existe em src/data/interface.ts`);
+  return area;
+});
+const proporcao = imagemTela.width / imagemTela.height;
+const idMascara = `mascara-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<figure class="interface">
+  <div class="quadro" style={`--proporcao: ${proporcao}`}>
+    <img src={imagemTela.src} width={imagemTela.width} height={imagemTela.height} alt={legenda ?? 'A tela do jogo'} />
+    {
+      marcadas.length > 0 && (
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <mask id={idMascara}>
+              <rect width="100" height="100" fill="white" />
+              {marcadas.map((a) =>
+                a.elipse ? (
+                  <ellipse cx={a.x + a.l / 2} cy={a.y + a.a / 2} rx={a.l / 2} ry={a.a / 2} fill="black" />
+                ) : (
+                  <rect x={a.x} y={a.y} width={a.l} height={a.a} fill="black" />
+                ),
+              )}
+            </mask>
+          </defs>
+          <rect class="sombra" width="100" height="100" mask={`url(#${idMascara})`} />
+          {marcadas.map((a) =>
+            a.elipse ? (
+              <ellipse class="contorno" cx={a.x + a.l / 2} cy={a.y + a.a / 2} rx={a.l / 2} ry={a.a / 2} />
+            ) : (
+              <rect class="contorno" x={a.x} y={a.y} width={a.l} height={a.a} />
+            ),
+          )}
+        </svg>
+      )
+    }
+  </div>
+  {legenda && <figcaption>{legenda}</figcaption>}
+</figure>
+
+<style>
+  .interface {
+    margin: 2rem 0;
+  }
+  .quadro {
+    position: relative;
+    aspect-ratio: var(--proporcao);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--borda);
+    box-shadow: 0 8px 24px var(--sombra);
+    cursor: zoom-in;
+  }
+  /* A imagem do capítulo não leva a borda/sombra padrão aqui, o quadro já tem */
+  .quadro img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .quadro svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .sombra {
+    fill: rgb(8 6 4 / 0.62);
+  }
+  .contorno {
+    fill: none;
+    stroke: var(--ambar);
+    stroke-width: 3;
+    vector-effect: non-scaling-stroke;
+  }
+  figcaption {
+    margin-top: 0.6rem;
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+  }
+</style>
