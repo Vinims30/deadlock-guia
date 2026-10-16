@@ -31,12 +31,12 @@ Depois abra <http://localhost:4321/deadlock-guia/>. A página atualiza sozinha s
 
    ```markdown
    ---
-   titulo: Meu capítulo
-   resumo: Uma frase que aparece no sumário.
+   titulo: "Meu capítulo"
+   resumo: "Uma frase que aparece no sumário."
    ---
    ```
 
-3. Escreva o texto em Markdown abaixo disso. Use `##` para subtítulos.
+3. Deixe o título e o resumo entre aspas. Escreva o texto em Markdown abaixo disso. Use `##` para subtítulos.
 4. Para colocar uma imagem: `![descrição da imagem](./imagens/arquivo.png)`.
 
 Para destacar os times no texto, use `<span class="ambar">Amber Hand</span>` e `<span class="safira">Sapphire Flame</span>`.

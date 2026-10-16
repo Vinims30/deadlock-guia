@@ -1,6 +1,6 @@
 ---
-titulo: Os personagens
-resumo: Quem é quem, separados por função.
+titulo: "Os personagens"
+resumo: "Quem é quem, separados por função."
 ---
 
 > Capítulo em construção.

@@ -1,6 +1,6 @@
 ---
-titulo: Pensando uma build
-resumo: Como escolher itens sem decorar todos.
+titulo: "Pensando uma build"
+resumo: "Como escolher itens sem decorar todos."
 ---
 
 > Capítulo em construção.

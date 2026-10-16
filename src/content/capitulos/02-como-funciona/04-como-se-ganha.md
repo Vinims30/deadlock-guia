@@ -1,6 +1,6 @@
 ---
-titulo: Como se ganha
-resumo: O caminho até o Patron inimigo.
+titulo: "Como se ganha"
+resumo: "O caminho até o Patron inimigo."
 ---
 
 > Capítulo em construção.
@@ -8,4 +8,5 @@ resumo: O caminho até o Patron inimigo.
 ## O que vai ter aqui
 
 - Os objetivos em ordem: Guardians, Walkers, Shrines e Patron
+- As duas fases do Patron
 - Por que derrubar estruturas importa mais do que matar

@@ -15,30 +15,24 @@ O manual do Omarchy é feito com o Writebook. Ele funciona como um livro:
 - **Navegação**: setas de anterior/próximo, busca e trilha de volta ao sumário.
 - **Visual**: muito espaço em branco, tipografia de leitura, imagens grandes que ampliam ao clicar.
 
-### Sumário proposto
+### Sumário
 
-1. **Como funciona o jogo**
-   - O que é um MOBA
-   - Como se ganha (Patrons, Guardians, Walkers, Shrines)
-   - Fases da partida (lane, mid game, late game)
-   - Eventos da partida
-2. **Composição de equipes**
-   - As funções (carry, suporte, tanque, etc.)
-   - Personagens por função (com uma ficha curta para cada um)
-3. **Mapa e macro**
-   - O mapa e as lanes
-   - Jungle e caixas: como maximizar o farm
-   - Buffs e objetivos com tempo marcado
-4. **Gameplay**
-   - Melee e parry
-   - Movimentação básica
-5. **Itens e builds**
-   - As 3 categorias de itens (Weapon, Vitality, Spirit)
-   - Como pensar uma build sem decorar item por item
-6. **Conceitos avançados** (opcional)
-   - Técnicas avançadas de movimentação
-   - Rotas de caixas
-   - Outros
+O sumário atual fica no próprio site: as seções estão em `src/secoes.ts` e os capítulos em `src/content/capitulos/`. Ordem das seções:
+
+1. Primeiros passos
+2. Como funciona o jogo
+3. Mapa e macro
+4. Gameplay
+5. Itens e builds
+6. Composição de equipes
+7. Conceitos avançados
+8. Glossário
+
+### Como escrevemos o conteúdo
+
+O Vinicius passa a ideia de cada capítulo. O Claude pesquisa a versão atual do jogo e escreve, e o Vinicius revisa.
+
+O jogo mudou muito na atualização City Never Sleeps (29/09/2026), então sempre conferir na [Deadlock Wiki](https://deadlock.wiki) e nas notas de atualização. O capítulo de personagens fica por último, porque heróis novos ainda estão saindo.
 
 ## Design
 
@@ -68,4 +62,4 @@ Fontes: uma serifada elegante para títulos (estilo art déco) e uma fonte de le
 - [x] Ferramenta: **Astro** (capítulos em Markdown)
 - [x] Publicação: **GitHub Pages** (repositório público)
 - [x] Tema: **escuro por padrão, com botão para o claro**
-- [ ] Ordem final dos capítulos
+- [x] Ordem final das seções

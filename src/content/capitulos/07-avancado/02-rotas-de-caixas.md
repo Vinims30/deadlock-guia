@@ -1,6 +1,6 @@
 ---
-titulo: Rotas de caixas
-resumo: Caminhos eficientes para farmar.
+titulo: "Rotas de caixas"
+resumo: "Caminhos eficientes para farmar."
 ---
 
 > Capítulo em construção.

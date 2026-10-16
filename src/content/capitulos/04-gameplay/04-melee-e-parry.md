@@ -1,6 +1,6 @@
 ---
-titulo: Melee e parry
-resumo: O combate corpo a corpo e como se defender dele.
+titulo: "Melee e parry"
+resumo: "O combate corpo a corpo e como se defender dele."
 ---
 
 > Capítulo em construção.

@@ -1,6 +1,6 @@
 ---
-titulo: O que é um MOBA
-resumo: A ideia geral por trás de jogos como Deadlock, Dota e League of Legends.
+titulo: "O que é um MOBA"
+resumo: "A ideia geral por trás de jogos como Deadlock, Dota e League of Legends."
 ---
 
 MOBA quer dizer *Multiplayer Online Battle Arena*. É um tipo de jogo em que **dois times se enfrentam num mapa fixo**, e cada time tenta destruir a base do outro.

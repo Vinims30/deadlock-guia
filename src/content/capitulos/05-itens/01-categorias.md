@@ -1,6 +1,6 @@
 ---
-titulo: As três categorias
-resumo: Weapon, Vitality e Spirit.
+titulo: "As três categorias"
+resumo: "Weapon, Vitality e Spirit."
 ---
 
 > Capítulo em construção.

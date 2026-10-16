@@ -1,6 +1,6 @@
 ---
-titulo: As fases da partida
-resumo: Lane, mid game e late game.
+titulo: "As fases da partida"
+resumo: "Lane, mid game e late game."
 ---
 
 > Capítulo em construção.

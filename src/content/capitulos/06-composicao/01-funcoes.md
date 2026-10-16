@@ -1,6 +1,6 @@
 ---
-titulo: As funções
-resumo: Carry, suporte, tanque e as outras.
+titulo: "As funções"
+resumo: "Carry, suporte, tanque e as outras."
 ---
 
 > Capítulo em construção.
