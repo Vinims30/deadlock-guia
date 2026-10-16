@@ -54,6 +54,16 @@ import Pendente from '../../../components/Pendente.astro';
 - `<Heroi nome="Abrams" funcao="Tanque" imagem={abrams}>texto</Heroi>` mostra a ficha de um herói, com o ícone importado no começo do arquivo (`import abrams from './imagens/herois/abrams.webp';`).
 - `<Pendente>texto</Pendente>` marca um print que falta. Com `tipo="conferir"`, marca algo para conferir no jogo. Só aparece no `npm run dev` e some no site publicado.
 
+## Testes automáticos
+
+```bash
+npm test
+```
+
+Gera o site, abre num Chromium de verdade e roda testes em todas as páginas. Cada teste corresponde a um bug que já aconteceu: páginas com erro, imagens quebradas, rolagem horizontal de 320px a 2560px, zoom das imagens (no computador e no celular), destaques sem zoom, imagens em branco com a placa de vídeo, avisos de pendência no site publicado e ícones de herói com zoom.
+
+**Regra do projeto:** todo bug novo ganha um teste que falharia com ele, em `tests/`. Rode `npm test` antes de salvar uma mudança.
+
 ## Publicação
 
 O repositório é privado por enquanto. Quando o site estiver pronto:
