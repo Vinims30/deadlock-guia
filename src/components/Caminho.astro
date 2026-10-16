@@ -1,0 +1,119 @@
+---
+// Diagrama de etapas em sequência (ex.: o caminho até o Patron).
+// Fica na horizontal em telas largas e na vertical no celular.
+// Uso: <Caminho etapas={[{ nome: 'Guardian', detalhe: 'um por lane' }, ...]} />
+interface Props {
+  etapas: { nome: string; detalhe?: string }[];
+  legenda?: string;
+}
+const { etapas, legenda } = Astro.props;
+---
+
+<figure class="caminho">
+  <ol>
+    {
+      etapas.map((e, i) => (
+        <li>
+          <span class="numero">{i + 1}</span>
+          <strong>{e.nome}</strong>
+          {e.detalhe && <span class="detalhe">{e.detalhe}</span>}
+        </li>
+      ))
+    }
+  </ol>
+  {legenda && <figcaption>{legenda}</figcaption>}
+</figure>
+
+<style>
+  .caminho {
+    margin: 2rem 0;
+  }
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    column-gap: 0.75rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--dourado);
+    border-radius: 8px;
+    background: var(--superficie);
+  }
+  /* Seta entre as etapas */
+  li:not(:last-child)::after {
+    content: '↓';
+    position: absolute;
+    left: 50%;
+    bottom: -1.55rem;
+    transform: translateX(-50%);
+    color: var(--dourado);
+  }
+  li:last-child {
+    border-color: var(--ambar);
+  }
+  .numero {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1px solid var(--dourado);
+    color: var(--dourado);
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-variant-numeric: lining-nums;
+  }
+  strong {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--texto) !important;
+  }
+  .detalhe {
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+  }
+
+  @media (min-width: 46rem) {
+    ol {
+      flex-direction: row;
+      gap: 1.4rem;
+    }
+    li {
+      flex: 1;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      row-gap: 0.3rem;
+      padding: 0.9rem 0.5rem;
+    }
+    .numero {
+      grid-row: auto;
+    }
+    li:not(:last-child)::after {
+      content: '→';
+      left: auto;
+      right: -1.2rem;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+  }
+</style>

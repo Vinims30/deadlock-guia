@@ -52,6 +52,7 @@ import Pendente from '../../../components/Pendente.astro';
 
 - `<Interface destaque="minimapa" legenda="O minimapa" />` mostra a tela do jogo com uma parte em destaque. As áreas disponíveis e a imagem usada ficam em `src/data/interface.ts`.
 - `<Heroi nome="Abrams" funcao="Tanque" imagem={abrams}>texto</Heroi>` mostra a ficha de um herói, com o ícone importado no começo do arquivo (`import abrams from './imagens/herois/abrams.webp';`).
+- `<Caminho etapas={[{ nome: 'Guardian', detalhe: 'uma em cada lane' }, ...]} />` mostra etapas em sequência com setas (horizontal no computador, vertical no celular).
 - `<Pendente>texto</Pendente>` marca um print que falta. Com `tipo="conferir"`, marca algo para conferir no jogo. Só aparece no `npm run dev` e some no site publicado.
 
 ## Testes automáticos

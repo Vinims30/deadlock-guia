@@ -1,0 +1,77 @@
+---
+titulo: "Como se ganha"
+resumo: "O caminho até o Patron inimigo, estrutura por estrutura."
+---
+
+import Caminho from '../../../components/Caminho.astro';
+
+Para ganhar uma partida de Deadlock, o seu time precisa **destruir o Patron inimigo**, que fica no fundo da base do outro time. Mas não dá para ir direto: o caminho é protegido por várias estruturas, e elas precisam cair numa ordem certa.
+
+## O caminho até o Patron
+
+<Caminho
+  etapas={[
+    { nome: 'Guardian', detalhe: 'uma em cada lane' },
+    { nome: 'Walker', detalhe: 'um em cada lane' },
+    { nome: 'Base Guardians', detalhe: 'uma dupla na entrada da base' },
+    { nome: 'Shrines', detalhe: 'duas, dentro da base' },
+    { nome: 'Patron', detalhe: 'o fim da partida' },
+  ]}
+  legenda="A ordem das estruturas, do meio do mapa até o fundo da base inimiga"
+/>
+
+Em **cada uma das três lanes** existe uma **Guardian**, depois um **Walker** e, na entrada da base, uma **dupla de Base Guardians**. Dentro da base ficam as duas **Shrines** e, atrás delas, o **Patron**.
+
+Você **não precisa derrubar tudo**. Basta abrir caminho por **uma lane** até a base, derrubando a Guardian, o Walker e a dupla de Base Guardians dela. Daí as Shrines ficam vulneráveis. Com as duas Shrines destruídas, o Patron fica vulnerável.
+
+## Cada estrutura
+
+### Guardian
+
+A primeira defesa de cada lane. Ataca com um **laser** quem chega perto e, se você ficar colado nela, com **golpes corpo a corpo**. Esses golpes dá para bloquear com o **parry**, e bloquear um deixa a Guardian atordoada por 2 segundos (você vai aprender o parry em *Melee e parry*).
+
+### Walker
+
+Um gigante que caminha sobre a lane. É bem mais forte que a Guardian: dispara um raio de fogo, solta bolas de fogo e dá uma **pisada** que atordoa quem estiver perto. Quanto mais Walkers do time caem, mais fortes ficam os que sobram: eles começam com 6.000 de vida e chegam a 12.000 quando sobra um só.
+
+### Base Guardians
+
+Uma dupla em cada lane, na porta da base. Derrubar uma dupla deixa **mais rápida** a zipline do seu time naquela lane, para sempre. E é a partir daí que as Shrines podem ser atacadas.
+
+### Shrines
+
+São duas, dentro da base, e o próprio Patron dispara contra quem as ataca. Quando uma Shrine cai, as tropas do seu time naquela lane viram **Super Troopers**, bem mais fortes. Quando as duas caem, o Patron fica vulnerável.
+
+### Patron
+
+A luta final tem **duas fases**:
+
+1. **Primeira fase:** o Patron dispara um laser e se defende. Quando perde **metade da vida**, ele fica invulnerável por um instante e desaba num **orbe** dentro de um fosso.
+2. **Segunda fase:** o **Patron enfraquecido** só pode ser atingido **de dentro do fosso**, e o time que está defendendo renasce mais rápido. É a hora de entrar com o time todo.
+
+Destruiu o orbe? **A partida acabou**, e o seu time ganhou.
+
+## O que cada estrutura dá
+
+| Estrutura | Souls | E ainda |
+| --- | --- | --- |
+| Guardian | 1.375 | |
+| Walker | 3.675 | Libera um **espaço extra de item** para o time todo (são três, um por Walker) |
+| Dupla de Base Guardians | 1.000 | Zipline mais rápida naquela lane |
+| Shrine | 2.000 | **Super Troopers** naquela lane |
+| Patron | | A vitória |
+
+Os espaços extras de item são aqueles com **cadeado** que você viu em *Controles e interface*. Derrubar Walkers é o jeito de abrir esses espaços.
+
+## As estruturas precisam das suas tropas
+
+Esta é a regra mais importante do capítulo: **as estruturas se protegem quando as suas tropas não estão por perto.**
+
+- A Guardian e o Walker ficam **invulneráveis** se não houver nenhum inimigo por perto.
+- Se você atacar o Walker, as Base Guardians ou as Shrines **antes da sua wave de tropas chegar**, eles ganham uma proteção forte, com muita resistência e regeneração de vida. Isso tem até nome: **proteção contra backdoor** (*backdoor* é atacar a base pelos fundos, sem as tropas).
+
+Na prática: **ataque as estruturas junto com as suas tropas**. Empurre a wave até a torre e bata nela enquanto as tropas inimigas estão ocupadas.
+
+## As estruturas enfraquecem com o tempo
+
+As torres começam a partida bem resistentes e vão perdendo essa resistência com o tempo: as Guardians até os **12 minutos** e os Walkers até os **18 minutos**. Depois disso, elas caem bem mais rápido. Por isso, no começo da partida o normal é cada time ficar na sua lane, e as estruturas começam a cair de verdade no meio da partida. Você vai ver isso em *As fases da partida*.
