@@ -1,0 +1,88 @@
+---
+titulo: "Souls: dinheiro e nível"
+resumo: "A única moeda do jogo, que também te faz subir de nível."
+---
+
+import Interface from '../../../components/Interface.astro';
+
+Em Deadlock existe uma moeda só: as **souls**. Elas servem para duas coisas ao mesmo tempo:
+
+1. **Comprar itens** na loja.
+2. **Subir de nível**, o que deixa o seu herói mais forte e libera as habilidades.
+
+Todo mundo começa a partida com **600 souls**. Daí para frente, quem junta souls mais rápido fica mais forte mais rápido. Por isso, juntar souls (o famoso **farm**) é uma das coisas mais importantes do jogo.
+
+## De onde vêm as souls
+
+Quase tudo que você derrota no mapa dá souls. Os valores crescem com o tempo de partida, então o que vale pouco no começo vale bem mais no fim.
+
+| Fonte | Quanto vale no começo | Observação |
+| --- | --- | --- |
+| **Tropas** das lanes | 100 por tropa | A fonte principal durante boa parte da partida |
+| **Heróis** inimigos | 200, e sobe 50 por minuto | Dividido com quem ajudou no abate |
+| **Haunts** (os monstros da jungle) | De 41 a 181, conforme o tamanho | Dividido entre quem bateu |
+| **Caixas** | Cerca de 23 | As *Tough Crates* valem o dobro e só abrem com melee pesado |
+| **Sinner's Sacrifice** | 310 | Máquinas espalhadas pelo mapa que aparecem aos 8 minutos |
+| **Torres** (Guardian, Walker) | 1.375 e 3.675 | Divididas com o time inteiro |
+| **Mid-Boss** | 3.000 | Dividido com o time inteiro |
+
+Você vai conhecer cada uma dessas fontes nas seções *Mapa e macro* e *Gameplay*. Por enquanto, guarde a ideia: **tudo dá souls, e as torres dão muito**.
+
+## Os orbes das tropas
+
+Quando uma tropa morre, ela solta **dois orbes**, cada um com metade das souls:
+
+- **Um orbe no chão**, que vai para o seu time automaticamente. Ninguém pode roubar.
+- **Um orbe flutuante**, que sobe no ar. Esse você precisa **acertar com um tiro** para garantir. Um tiro só basta, e a bala volta para o pente.
+
+O orbe flutuante aparece **verde** se a tropa era do inimigo (ou seja, é seu) e **laranja** se a tropa era do seu time (ou seja, é do inimigo). Atirar num orbe laranja é **roubar** essas souls do inimigo, o famoso **deny**. Se ninguém acertar o orbe em cerca de um segundo, ele estoura e as souls vão para quem estiver perto.
+
+Se você matar a tropa com **melee** (o ataque corpo a corpo), não sobe orbe flutuante: as souls vêm direto para você. O capítulo *Farmando tropas* mostra como fazer tudo isso na prática.
+
+## Dividindo com o time
+
+Quando vários aliados estão perto de uma tropa ou de um inimigo que morre, as souls são **divididas** entre eles. Por isso, ficar duas pessoas na mesma lane faz cada uma ganhar menos. Isso vai ser importante quando falarmos de como o time se divide pelo mapa.
+
+## Gastar souls não te deixa mais fraco
+
+O seu **nível** depende das souls que você **juntou**, não das que você tem guardadas. Gastar souls na loja **não diminui o seu nível**. Então não tenha medo de gastar: souls paradas não fazem nada por você.
+
+## O nível
+
+O nível aparece no círculo verde ao lado das suas souls:
+
+<Interface destaque="nivel" legenda="O seu nível" />
+
+Ele sobe sozinho conforme você junta souls, até o **nível 35**. Cada nível:
+
+- aumenta um pouco o **dano da arma**, o **dano do melee**, a **vida** e o **spirit power** (a força das habilidades);
+- **desbloqueia uma habilidade** ou dá **pontos** para melhorar as que você já tem. Nos primeiros níveis você libera as quatro habilidades (a ultimate por último) e, daí em diante, ganha pontos para melhorá-las.
+
+Para usar os pontos, segure <kbd>Tab</kbd> e escolha a habilidade (veja *Controles e interface*).
+
+## Haunted Souls e a bolsa de souls
+
+Nem toda soul está garantida no momento em que você ganha. As souls que vêm da **jungle**, das **caixas** e do **Sinner's Sacrifice** chegam como **Haunted Souls** e aparecem em vermelho, embaixo das suas souls:
+
+<Interface destaque="souls" legenda="As souls e, embaixo, em vermelho, as Haunted Souls" />
+
+Elas já contam para o seu nível e já podem ser gastas, mas ainda estão **em risco**. Com o tempo, elas vão virando souls normais sozinhas. Aos 10 minutos de partida, por exemplo, 500 Haunted Souls levam cerca de 2 minutos para virar souls garantidas.
+
+**Se você morrer antes disso**, as Haunted Souls caem no chão como uma **bolsa de souls**:
+
+- A bolsa brilha em **verde** e aparece no minimapa como um círculo.
+- **Qualquer jogador pode pegar**, do seu time ou do inimigo, com um **melee pesado**.
+- Ela some depois de **3 minutos**.
+- Se você tinha poucas Haunted Souls (menos de 100 aos 10 minutos, por exemplo), não cai bolsa nenhuma: elas simplesmente se perdem.
+
+**E gastar protege?** Só em parte. Na hora de comprar, o jogo gasta primeiro as souls garantidas e só depois as Haunted. Então gastar só protege as Haunted Souls se você gastar mais do que tem de souls garantidas.
+
+> **Dica:** depois de farmar bastante na jungle, evite lutas arriscadas por um tempo, ou passe na loja e gaste tudo. E se um aliado morrer perto de você, procure a bolsa dele: pegando com um melee pesado, as souls ficam com o seu time em vez de irem para o inimigo.
+
+## Quando o seu time está atrás
+
+O jogo ajuda quem está perdendo, então nenhuma partida está perdida cedo:
+
+- O time com menos souls ganha **até 26% a mais** das tropas, dos monstros e dos objetivos.
+- Derrotar um herói inimigo mais forte que a média do seu time vale **bem mais souls**.
+- A **Soul Urn** (que você vai conhecer em *Urn, Mid-Boss e buffs*) dá souls extras para o time que está atrás.
