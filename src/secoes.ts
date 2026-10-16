@@ -12,19 +12,19 @@ export const secoes = [
     descricao: 'Lanes, jungle, caixas e os objetivos com hora marcada.',
   },
   {
-    pasta: '03-composicao',
-    titulo: 'Composição de equipes',
-    descricao: 'As funções de cada personagem e quem faz o quê.',
-  },
-  {
-    pasta: '04-gameplay',
+    pasta: '03-gameplay',
     titulo: 'Gameplay',
     descricao: 'Melee, parry e o básico da movimentação.',
   },
   {
-    pasta: '05-itens',
+    pasta: '04-itens',
     titulo: 'Itens e builds',
     descricao: 'As três categorias de itens e como pensar uma build.',
+  },
+  {
+    pasta: '05-composicao',
+    titulo: 'Composição de equipes',
+    descricao: 'As funções de cada personagem e quem faz o quê.',
   },
   {
     pasta: '06-avancado',
