@@ -15,7 +15,9 @@ export default defineConfig({
     launchOptions: { executablePath: chromium },
   },
   projects: [
-    { name: 'padrao', testIgnore: /gpu\.spec/ },
+    { name: 'padrao', testIgnore: /(gpu|dev)\.spec/ },
+    // Testes do servidor de desenvolvimento (npm run dev)
+    { name: 'dev', testMatch: /dev\.spec/ },
     {
       // Bug: imagens com destaque em branco no Chromium com placa de vídeo
       name: 'gpu',
@@ -23,12 +25,21 @@ export default defineConfig({
       use: { launchOptions: { executablePath: chromium, args: ['--enable-gpu', '--ignore-gpu-blocklist'] } },
     },
   ],
-  webServer: {
-    // O Astro roda o preview em segundo plano quando detecta um agente de IA
-    // (como o Claude Code); sem essas variáveis ele fica em primeiro plano.
-    command: 'npm run build && env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro preview --port 4322',
-    url: 'http://localhost:4322/deadlock-guia/',
-    reuseExistingServer: false,
-    timeout: 180_000,
-  },
+  // O Astro roda os servidores em segundo plano quando detecta um agente de IA
+  // (como o Claude Code); sem essas variáveis eles ficam em primeiro plano.
+  webServer: [
+    {
+      command: 'npm run build && env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro preview --port 4322',
+      url: 'http://localhost:4322/deadlock-guia/',
+      reuseExistingServer: false,
+      timeout: 180_000,
+    },
+    {
+      // Servidor de desenvolvimento separado, para não depender do npm run dev aberto
+      command: 'env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro dev --port 4323 --ignore-lock',
+      url: 'http://localhost:4323/deadlock-guia/',
+      reuseExistingServer: false,
+      timeout: 120_000,
+    },
+  ],
 });
