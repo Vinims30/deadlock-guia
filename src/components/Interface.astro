@@ -4,55 +4,78 @@
 // Vários destaques:        <Interface destaque={['vida', 'mira']} />
 // Outro print:             <Interface tela="inicio" destaque="barra-inimiga" />
 // Sem destaque mostra a tela inteira.
+//
+// Destaques pequenos aparecem aproximados (com zoom na região).
+// Para mostrar a tela inteira mesmo assim: aproximar={false}
+// Clicar abre a tela inteira com o destaque, em tamanho grande.
 import { telas, type Area, type NomeTela } from '../data/interface';
+import { desenharDestaques } from '../lib/destaques';
 
 interface Props {
   tela?: NomeTela;
   destaque?: string | string[];
   legenda?: string;
+  aproximar?: boolean;
 }
 
-const { tela = 'partida', destaque = [], legenda } = Astro.props;
-const { imagem: imagemTela, areas } = telas[tela];
+const { tela = 'partida', destaque = [], legenda, aproximar = true } = Astro.props;
+const { imagem, areas } = telas[tela];
 const nomes = Array.isArray(destaque) ? destaque : [destaque];
-const marcadas = nomes.map((nome) => {
+const marcadas: Area[] = nomes.map((nome) => {
   const area = (areas as Record<string, Area>)[nome];
   if (!area) throw new Error(`Área "${nome}" não existe na tela "${tela}" (src/data/interface.ts)`);
   return area;
 });
-const proporcao = imagemTela.width / imagemTela.height;
-const idMascara = `mascara-${Math.random().toString(36).slice(2, 8)}`;
+
+// Recorte: um retângulo (em % da imagem) em volta dos destaques, com uma margem.
+// Ele é ajustado para não ficar estreito nem achatado demais; se acabar
+// quase do tamanho da imagem, mostra a tela inteira.
+const W = imagem.width;
+const H = imagem.height;
+let recorte = { x: 0, y: 0, l: 100, a: 100 };
+if (aproximar && marcadas.length > 0) {
+  const x1 = Math.min(...marcadas.map((a) => a.x));
+  const y1 = Math.min(...marcadas.map((a) => a.y));
+  const x2 = Math.max(...marcadas.map((a) => a.x + a.l));
+  const y2 = Math.max(...marcadas.map((a) => a.y + a.a));
+  // Margem em volta do destaque: o próprio tamanho dele, entre 4% e 10% da imagem.
+  // Largura mínima do recorte: 30% da imagem.
+  const margem = (tamanho: number) => Math.min(10, Math.max(4, tamanho));
+  let l = Math.max(30, x2 - x1 + margem(x2 - x1));
+  let a = y2 - y1 + margem(y2 - y1);
+  // Proporção na tela entre 1,3 e 3,5 (largura / altura em pixels)
+  const proporcao = (l * W) / (a * H);
+  if (proporcao > 3.5) a = (l * W) / (3.5 * H);
+  if (proporcao < 1.3) l = (a * H * 1.3) / W;
+  l = Math.min(100, l);
+  a = Math.min(100, a);
+  if (l < 85 || a < 85) {
+    const limitar = (v: number, tamanho: number) => Math.min(100 - tamanho, Math.max(0, v));
+    recorte = {
+      x: limitar((x1 + x2) / 2 - l / 2, l),
+      y: limitar((y1 + y2) / 2 - a / 2, a),
+      l,
+      a,
+    };
+  }
+}
+const posicao = `width: ${10000 / recorte.l}%; height: ${10000 / recorte.a}%; left: ${(-recorte.x * 100) / recorte.l}%; top: ${(-recorte.y * 100) / recorte.a}%`;
+const proporcaoQuadro = `${recorte.l * W} / ${recorte.a * H}`;
 ---
 
 <figure class="interface">
-  <div class="quadro" style={`--proporcao: ${proporcao}`}>
-    <img src={imagemTela.src} width={imagemTela.width} height={imagemTela.height} alt={legenda ?? 'A tela do jogo'} />
-    {
-      marcadas.length > 0 && (
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <mask id={idMascara}>
-              <rect width="100" height="100" fill="white" />
-              {marcadas.map((a) =>
-                a.elipse ? (
-                  <ellipse cx={a.x + a.l / 2} cy={a.y + a.a / 2} rx={a.l / 2} ry={a.a / 2} fill="black" />
-                ) : (
-                  <rect x={a.x} y={a.y} width={a.l} height={a.a} fill="black" />
-                ),
-              )}
-            </mask>
-          </defs>
-          <rect class="sombra" width="100" height="100" mask={`url(#${idMascara})`} />
-          {marcadas.map((a) =>
-            a.elipse ? (
-              <ellipse class="contorno" cx={a.x + a.l / 2} cy={a.y + a.a / 2} rx={a.l / 2} ry={a.a / 2} />
-            ) : (
-              <rect class="contorno" x={a.x} y={a.y} width={a.l} height={a.a} />
-            ),
-          )}
-        </svg>
-      )
-    }
+  <div
+    class="quadro"
+    style={`aspect-ratio: ${proporcaoQuadro}`}
+    data-ampliar={imagem.src}
+    data-largura={imagem.width}
+    data-altura={imagem.height}
+    data-areas={JSON.stringify(marcadas)}
+  >
+    <div class="tela" style={posicao}>
+      <img src={imagem.src} width={imagem.width} height={imagem.height} alt={legenda ?? 'A tela do jogo'} />
+      <Fragment set:html={desenharDestaques(marcadas)} />
+    </div>
   </div>
   {legenda && <figcaption>{legenda}</figcaption>}
 </figure>
@@ -63,37 +86,19 @@ const idMascara = `mascara-${Math.random().toString(36).slice(2, 8)}`;
   }
   .quadro {
     position: relative;
-    aspect-ratio: var(--proporcao);
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--borda);
     box-shadow: 0 8px 24px var(--sombra);
     cursor: zoom-in;
   }
-  /* A imagem do capítulo não leva a borda/sombra padrão aqui, o quadro já tem */
-  .quadro img {
+  .tela {
+    position: absolute;
+  }
+  .tela img {
     display: block;
     width: 100%;
     height: 100%;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .quadro svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .sombra {
-    fill: rgb(8 6 4 / 0.62);
-  }
-  .contorno {
-    fill: none;
-    stroke: var(--ambar);
-    stroke-width: 3;
-    vector-effect: non-scaling-stroke;
   }
   figcaption {
     margin-top: 0.6rem;

@@ -5,31 +5,42 @@
 <dialog class="ampliar" aria-label="Imagem ampliada"></dialog>
 
 <script>
+  import { desenharDestaques } from '../lib/destaques';
+
   const dialogo = document.querySelector<HTMLDialogElement>('dialog.ampliar');
 
-  function abrir(conteudo: HTMLElement) {
+  // Monta a imagem grande do zero, no maior tamanho que cabe na tela
+  function abrir(src: string, alt: string, largura: number, altura: number, destaques = '') {
     if (!dialogo) return;
-    dialogo.replaceChildren(conteudo);
+    const caixa = document.createElement('div');
+    caixa.className = 'ampliada';
+    caixa.style.aspectRatio = `${largura} / ${altura}`;
+    caixa.style.width = `min(95vw, calc(95vh * ${largura / altura}))`;
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    caixa.append(img);
+    caixa.insertAdjacentHTML('beforeend', destaques);
+
+    dialogo.replaceChildren(caixa);
     dialogo.showModal();
   }
 
-  // Imagens comuns: mostra só a imagem
+  // Imagens comuns
   document.querySelectorAll<HTMLImageElement>('.prosa img').forEach((img) => {
     if (img.closest('.quadro')) return;
     img.addEventListener('click', () => {
-      const grande = document.createElement('img');
-      grande.src = img.currentSrc || img.src;
-      grande.alt = img.alt;
-      abrir(grande);
+      abrir(img.currentSrc || img.src, img.alt, img.naturalWidth || 16, img.naturalHeight || 9);
     });
   });
 
-  // Imagens com destaque (componente Interface): amplia a imagem junto com o destaque
+  // Imagens com destaque (componente Interface): mostra a tela inteira com o destaque
   document.querySelectorAll<HTMLElement>('.prosa .quadro').forEach((quadro) => {
     quadro.addEventListener('click', () => {
-      const copia = quadro.cloneNode(true) as HTMLElement;
-      copia.classList.add('quadro-ampliado');
-      abrir(copia);
+      const { ampliar = '', largura = '16', altura = '9', areas = '[]' } = quadro.dataset;
+      const alt = quadro.querySelector('img')?.alt ?? '';
+      abrir(ampliar, alt, Number(largura), Number(altura), desenharDestaques(JSON.parse(areas)));
     });
   });
 
@@ -39,27 +50,24 @@
 
 <style>
   .ampliar {
-    max-width: 95vw;
-    max-height: 95vh;
+    max-width: none;
+    max-height: none;
     padding: 0;
     border: none;
     background: transparent;
-    overflow: hidden;
+    overflow: visible;
     cursor: zoom-out;
   }
   .ampliar::backdrop {
     background: rgb(10 8 6 / 0.88);
   }
-  /* Ocupa a tela toda e encaixa a imagem sem distorcer */
-  .ampliar :global(> img) {
-    display: block;
-    width: 95vw;
-    height: 95vh;
-    object-fit: contain;
+  .ampliar :global(.ampliada) {
+    position: relative;
   }
-  /* Imagem com destaque: o maior tamanho que cabe na tela mantendo a proporção */
-  .ampliar :global(.quadro-ampliado) {
-    width: min(95vw, calc(95vh * var(--proporcao, 1.7778)));
-    cursor: zoom-out;
+  .ampliar :global(.ampliada img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
   }
 </style>

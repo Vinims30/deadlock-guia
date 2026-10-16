@@ -24,6 +24,10 @@ Quando alguém morre, o retrato fica cinza e aparece um **número vermelho**: s�
 
 No meio fica o **relógio** da partida. Vários eventos acontecem em horários marcados (você vai ver isso em *Eventos da partida*), então vale a pena dar uma olhada nele de vez em quando. Embaixo do relógio fica a **soma das souls de cada time**: no print, 149 mil contra 142 mil. É o jeito mais rápido de saber quem está ganhando.
 
+<Interface destaque="ultimates" legenda="Os ícones embaixo dos retratos do seu time" />
+
+Os **ícones embaixo dos retratos** mostram se a **ultimate** de cada herói está pronta. Vale a pena conferir antes de uma luta: um inimigo com a ultimate pronta ainda tem a habilidade mais forte guardada.
+
 ### Sua vida
 
 <Interface destaque="vida" legenda="A barra de vida, ao lado do seu herói" />
@@ -54,6 +58,12 @@ Essas mesmas três cores aparecem nos itens da loja. Cada item melhora uma delas
 
 Os quadradinhos verdes logo acima são **bônus temporários** que você pegou pelo mapa, como mais vida ou mais velocidade. Quando aparecem em vermelho, são **penalidades**, normalmente causadas por uma habilidade inimiga.
 
+### Seu nível
+
+<Interface destaque="nivel" legenda="O seu nível" />
+
+O número no círculo verde é o **nível** do seu herói. Ele sobe sozinho conforme você junta souls. Cada nível deixa os seus atributos um pouco mais fortes, e de tempos em tempos um nível novo te dá um **ponto para melhorar uma habilidade**.
+
 ### Suas souls
 
 <Interface destaque="souls" legenda="As souls que você tem para gastar" />
@@ -76,13 +86,13 @@ A maioria dos itens é **passiva**: ela funciona sozinha. Alguns têm um efeito 
 
 <Interface destaque="habilidades" legenda="As quatro habilidades do seu herói" />
 
-Cada herói tem **quatro habilidades**. A letra embaixo de cada ícone é a tecla que usa aquela habilidade. A última é a **ultimate**, a mais forte, que demora mais para recarregar.
+Cada herói tem **quatro habilidades**, usadas com <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>. A letra embaixo de cada ícone é a tecla daquela habilidade (nos prints deste guia as teclas foram trocadas para Q, E, C e X). A última é a **ultimate**, a mais forte, que demora mais para recarregar.
 
 As habilidades **não gastam mana nem energia**. Depois de usar uma, ela entra em **recarga** e o ícone mostra um contador até poder ser usada de novo. No print, a ultimate ainda precisa de 25 segundos.
 
 <Interface tela="inicio" destaque="melhorar-habilidade" legenda="No começo da partida, quase todas as habilidades estão bloqueadas" />
 
-No começo da partida quase todas as habilidades estão **bloqueadas** (os ícones apagados). O número verde embaixo delas mostra quantos **pontos** você tem para desbloquear ou melhorar habilidades. Para usar um ponto, **segure <kbd>Tab</kbd>** e escolha a habilidade. O jogo marca uma delas como **Recommended** para ajudar quem está começando. Você ganha mais pontos juntando souls (mais sobre isso em *Heróis e habilidades*).
+No começo da partida quase todas as habilidades estão **bloqueadas** (os ícones apagados). O número verde embaixo delas mostra quantos **pontos** você tem para desbloquear ou melhorar habilidades. Para usar um ponto, **segure <kbd>Tab</kbd>** e escolha a habilidade. O jogo marca uma delas como **Recommended** para ajudar quem está começando. Você ganha mais pontos subindo de nível (mais sobre isso em *Heróis e habilidades*).
 
 ### O minimapa
 
@@ -101,14 +111,18 @@ Olhar o minimapa é um hábito que separa jogadores novos dos experientes. Uma r
 Todo herói tem uma barra de vida flutuando em cima da cabeça, com o nome do jogador. Ela mostra mais do que a vida:
 
 - **As setinhas (›)** em cima da barra mostram a **stamina** dele. Para os inimigos elas só aparecem por alguns segundos depois de um dash. Se ele acabou de gastar tudo, não tem como fugir.
-- **O ícone à esquerda** mostra se a **ultimate** dele está pronta. Um inimigo com a ultimate pronta ainda tem a habilidade mais forte guardada.
+
+<Pendente tipo="conferir">
+  O olho à esquerda da barra: as notas da atualização falam de um indicador de ultimate na barra de vida, mas pode ser visibilidade. Testar numa partida (o olho fecha logo depois do inimigo usar a ultimate?) e então explicar aqui.
+</Pendente>
+
 - **Azul-claro** no fim da barra é **escudo**, uma vida extra temporária que some antes da vida de verdade.
 
 ### Avisos na tela
 
-<Interface destaque="objetivo" legenda="Uma sugestão do jogo" />
+<Interface destaque="objetivo" legenda="Um pedido de um colega de time" />
 
-De vez em quando o jogo sugere o que fazer, como "Push the York Walker" ("empurre até o Walker da York"). Para quem está começando, seguir essas sugestões é uma boa forma de ajudar o time.
+Esses balões são **mensagens dos seus colegas de time**, enviadas pelos pings. O retrato mostra quem mandou. No print, um aliado está pedindo "Push the York Walker" ("vamos empurrar até o Walker da York"). É parecido com o rádio do CS, quando alguém fala "vamos para o bomb B". Quando você ainda não sabe o que fazer, seguir esses pedidos é uma boa forma de ajudar o time. Você aprende a mandar os seus em *Comunicação com o time*.
 
 <Interface tela="inicio" destaque="abates" legenda="Quem derrotou quem" />
 
@@ -151,12 +165,8 @@ Estas são as teclas padrão. Você pode trocar qualquer uma em **Configuraçõe
 | --- | --- |
 | <kbd>B</kbd> | Abrir a loja |
 | <kbd>Tab</kbd> | Placar, com as souls e os itens de todo mundo |
-| Rodinha do mouse | Ping, para marcar algo para o time |
+| Clicar na rodinha do mouse | Ping, para marcar algo para o time. Segure para abrir a roda com mais mensagens |
 | <kbd>Enter</kbd> | Chat do time |
 | <kbd>Shift</kbd> + <kbd>Enter</kbd> | Chat para todos, incluindo os inimigos |
-
-<Pendente tipo="conferir">
-  Os prints mostram as habilidades em Q, E, C e X, e não em 1, 2, 3 e 4. Confirmar quais são as teclas padrão hoje (Configurações → Teclas → restaurar padrão) e ajustar as tabelas. Conferir também o ping na rodinha do mouse e o zoom no botão direito.
-</Pendente>
 
 > **Dica:** o <kbd>Tab</kbd> é um dos atalhos mais úteis para quem está começando. Ele mostra quem está ganhando em souls e o que cada inimigo comprou.
