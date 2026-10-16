@@ -1,0 +1,87 @@
+---
+// Ilustração da capa: horizonte de Nova York em estilo art déco.
+// É provisória, até termos uma imagem de verdade.
+const centro = { x: 320, y: 300 };
+
+// Raios do "sol nascente" atrás dos prédios
+const raios = Array.from({ length: 19 }, (_, i) => {
+  const angulo = Math.PI + (i * Math.PI) / 18;
+  return {
+    x: centro.x + Math.cos(angulo) * 300,
+    y: centro.y + Math.sin(angulo) * 300,
+  };
+});
+
+// Prédios: [x, largura, altura]. O lado direito espelha o esquerdo.
+const lado: [number, number, number][] = [
+  [30, 50, 70],
+  [80, 46, 120],
+  [126, 54, 90],
+  [180, 40, 150],
+  [220, 56, 115],
+];
+const predios = [...lado, ...lado.map(([x, l, a]) => [640 - x - l, l, a] as [number, number, number])];
+
+// Torre central em degraus, com a agulha no topo
+const degraus: [number, number, number][] = [
+  [282, 76, 140],
+  [292, 56, 175],
+  [302, 36, 205],
+];
+---
+
+<svg class="capa" viewBox="0 0 640 320" role="img" aria-label="Horizonte de Nova York em estilo art déco">
+  <g class="raios">
+    {raios.map((r) => <line x1={centro.x} y1={centro.y} x2={r.x} y2={r.y} />)}
+  </g>
+  {[120, 150].map((r) => (
+    <path class="sol" d={`M${centro.x - r} ${centro.y} A${r} ${r} 0 0 1 ${centro.x + r} ${centro.y}`} />
+  ))}
+
+  <g class="predio">
+    {predios.map(([x, l, a]) => <rect x={x} y={300 - a} width={l} height={a} />)}
+    {degraus.map(([x, l, a]) => <rect x={x} y={300 - a} width={l} height={a} />)}
+    <polygon points="306,95 334,95 320,30" />
+  </g>
+
+  <g class="janelas">
+    {[0, 1, 2, 3, 4, 5].map((i) => <line x1="310" y1={140 + i * 22} x2="330" y2={140 + i * 22} />)}
+  </g>
+
+  <line class="chao" x1="0" y1="300" x2="640" y2="300" />
+</svg>
+
+<style>
+  .capa {
+    display: block;
+    width: 100%;
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+  .raios line {
+    stroke: var(--dourado);
+    stroke-width: 1;
+    opacity: 0.3;
+  }
+  .sol {
+    fill: none;
+    stroke: var(--dourado);
+    stroke-width: 1.5;
+    opacity: 0.6;
+  }
+  .predio rect,
+  .predio polygon {
+    fill: var(--superficie);
+    stroke: var(--dourado);
+    stroke-width: 1.5;
+  }
+  .janelas line {
+    stroke: var(--ambar);
+    stroke-width: 2;
+    opacity: 0.8;
+  }
+  .chao {
+    stroke: var(--dourado);
+    stroke-width: 2;
+  }
+</style>

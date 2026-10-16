@@ -1,0 +1,60 @@
+---
+import '@fontsource/limelight';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import BotaoTema from '../components/BotaoTema.astro';
+import Ampliar from '../components/Ampliar.astro';
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+}
+
+const { titulo, descricao = 'Um manual de Deadlock para quem nunca jogou um MOBA.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR" data-theme="escuro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descricao} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
+    <title>{titulo}</title>
+    <script is:inline>
+      // Aplica o tema salvo antes da página aparecer (evita piscar)
+      try {
+        const salvo = localStorage.getItem('tema');
+        if (salvo) document.documentElement.dataset.theme = salvo;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="topo">
+      <div class="topo-esquerda"><slot name="topo" /></div>
+      <BotaoTema />
+    </header>
+    <slot />
+    <Ampliar />
+  </body>
+</html>
+
+<style>
+  .topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in srgb, var(--fundo) 88%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .topo-esquerda {
+    min-width: 0;
+  }
+</style>

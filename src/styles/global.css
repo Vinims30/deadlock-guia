@@ -1,0 +1,197 @@
+/* ------------------------------------------------------------
+   Cores
+   Escuro: a cidade à noite. Claro: pergaminho e tinta.
+   ------------------------------------------------------------ */
+:root,
+:root[data-theme='escuro'] {
+  --fundo: #14110f;
+  --superficie: #1e1a16;
+  --borda: #3a3128;
+  --texto: #e8dcc4;
+  --texto-suave: #a89a82;
+  --dourado: #c9a14a;
+  --dourado-forte: #e2bd6a;
+  --ambar: #e08a2c;
+  --safira: #5a95e0;
+  --sombra: rgb(0 0 0 / 0.45);
+  color-scheme: dark;
+}
+
+:root[data-theme='claro'] {
+  --fundo: #f4ecdc;
+  --superficie: #ebe0c9;
+  --borda: #d3c3a3;
+  --texto: #2a211a;
+  --texto-suave: #6b5b48;
+  --dourado: #94701f;
+  --dourado-forte: #7a5a12;
+  --ambar: #b5651a;
+  --safira: #2c5ea8;
+  --sombra: rgb(60 40 20 / 0.18);
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------
+   Fontes
+   ------------------------------------------------------------ */
+:root {
+  --fonte-capa: 'Limelight', serif;
+  --fonte-titulo: 'Cormorant Garamond', serif;
+  --fonte-texto: 'Inter Variable', system-ui, sans-serif;
+  --largura-texto: 42rem;
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+a {
+  color: var(--dourado-forte);
+  text-underline-offset: 0.2em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--dourado);
+  outline-offset: 3px;
+}
+
+/* Linha decorativa art déco: ——— ◆ ——— */
+.ornamento {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--dourado);
+  margin: 3rem auto;
+  max-width: 14rem;
+}
+.ornamento::before,
+.ornamento::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+.ornamento span {
+  font-size: 0.7rem;
+}
+
+/* ------------------------------------------------------------
+   Texto dos capítulos
+   ------------------------------------------------------------ */
+.prosa {
+  max-width: var(--largura-texto);
+  margin: 0 auto;
+}
+
+.prosa h2,
+.prosa h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--texto);
+}
+.prosa h2 {
+  font-size: 1.9rem;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--dourado);
+}
+.prosa h3 {
+  font-size: 1.45rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.prosa strong {
+  color: var(--dourado-forte);
+  font-weight: 600;
+}
+
+.prosa ul,
+.prosa ol {
+  padding-left: 1.4rem;
+}
+.prosa li::marker {
+  color: var(--dourado);
+}
+
+.prosa blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--dourado);
+  background: var(--superficie);
+  border-radius: 0 6px 6px 0;
+}
+.prosa blockquote p {
+  margin: 0.4rem 0;
+}
+
+.prosa code {
+  font-size: 0.9em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+}
+
+.prosa img {
+  display: block;
+  margin: 2rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+  box-shadow: 0 8px 24px var(--sombra);
+  cursor: zoom-in;
+}
+
+.prosa table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+.prosa th,
+.prosa td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--borda);
+}
+.prosa th {
+  color: var(--dourado-forte);
+  font-weight: 600;
+}
+
+/* Cores dos times, para usar no texto: <span class="ambar">Amber Hand</span> */
+.ambar {
+  color: var(--ambar);
+  font-weight: 600;
+}
+.safira {
+  color: var(--safira);
+  font-weight: 600;
+}

@@ -1,0 +1,169 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { carregarLivro, link, type Capitulo } from '../lib/livro';
+
+// Gera uma página para cada capítulo, sabendo qual vem antes e depois
+export async function getStaticPaths() {
+  const { capitulos } = await carregarLivro();
+  return capitulos.map((capitulo, i) => ({
+    params: { slug: capitulo.slug },
+    props: { capitulo, anterior: capitulos[i - 1], proximo: capitulos[i + 1] },
+  }));
+}
+
+interface Props {
+  capitulo: Capitulo;
+  anterior?: Capitulo;
+  proximo?: Capitulo;
+}
+
+const { capitulo, anterior, proximo } = Astro.props;
+const { Content } = await render(capitulo.entrada);
+const { titulo, resumo } = capitulo.entrada.data;
+---
+
+<Base titulo={`${titulo} · Bem-vinda a Nova York`} descricao={resumo}>
+  <a slot="topo" class="voltar" href={link()}>
+    <span aria-hidden="true">←</span> <span class="voltar-nome">Bem-vinda a Nova York</span>
+  </a>
+
+  <main>
+    <article class="prosa">
+      <header class="cabecalho">
+        <p class="secao">{capitulo.numero} · {capitulo.secao.titulo}</p>
+        <h1>{titulo}</h1>
+        {resumo && <p class="resumo">{resumo}</p>}
+      </header>
+      <Content />
+    </article>
+
+    <div class="ornamento"><span>◆</span></div>
+
+    <nav class="navegacao" aria-label="Capítulos">
+      {
+        anterior ? (
+          <a class="anterior" href={link(anterior.slug)} data-tecla="ArrowLeft">
+            <span class="direcao">← Anterior</span>
+            <span class="nome">{anterior.entrada.data.titulo}</span>
+          </a>
+        ) : (
+          <a class="anterior" href={link()} data-tecla="ArrowLeft">
+            <span class="direcao">← Voltar</span>
+            <span class="nome">Sumário</span>
+          </a>
+        )
+      }
+      {
+        proximo ? (
+          <a class="proximo" href={link(proximo.slug)} data-tecla="ArrowRight">
+            <span class="direcao">Próximo →</span>
+            <span class="nome">{proximo.entrada.data.titulo}</span>
+          </a>
+        ) : (
+          <a class="proximo" href={link()} data-tecla="ArrowRight">
+            <span class="direcao">Fim →</span>
+            <span class="nome">Voltar ao sumário</span>
+          </a>
+        )
+      }
+    </nav>
+  </main>
+</Base>
+
+<script>
+  // Setas do teclado trocam de capítulo
+  document.addEventListener('keydown', (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (document.querySelector('dialog[open]')) return;
+    const destino = document.querySelector<HTMLAnchorElement>(`[data-tecla="${e.key}"]`);
+    if (destino) destino.click();
+  });
+</script>
+
+<style>
+  main {
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .voltar {
+    display: inline-flex;
+    gap: 0.5rem;
+    color: var(--texto-suave);
+    text-decoration: none;
+    font-family: var(--fonte-capa);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .voltar:hover {
+    color: var(--dourado-forte);
+  }
+
+  .cabecalho {
+    margin-bottom: 2.5rem;
+  }
+  .secao {
+    margin: 0;
+    color: var(--dourado);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.3rem, 7vw, 3.2rem);
+    line-height: 1.1;
+    margin: 0.4rem 0 0.75rem;
+  }
+  .resumo {
+    margin: 0;
+    color: var(--texto-suave);
+    font-size: 1.15rem;
+  }
+
+  .navegacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: var(--largura-texto);
+    margin: 0 auto;
+  }
+  .navegacao a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--texto);
+    min-width: 0;
+  }
+  .navegacao a:hover {
+    border-color: var(--dourado);
+    background: var(--superficie);
+  }
+  .proximo {
+    text-align: right;
+  }
+  .direcao {
+    color: var(--dourado);
+    font-size: 0.85rem;
+  }
+  .nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  @media (max-width: 30rem) {
+    .voltar-nome {
+      display: none;
+    }
+    .voltar::after {
+      content: 'Sumário';
+    }
+  }
+</style>

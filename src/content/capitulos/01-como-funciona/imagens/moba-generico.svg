@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" font-family="sans-serif">
+  <rect width="600" height="400" fill="#1e1a16"/>
+  <!-- Lanes -->
+  <g fill="none" stroke="#c9a14a" stroke-width="10" stroke-linecap="round" opacity="0.55">
+    <path d="M100 330 L100 70 L500 70"/>
+    <path d="M100 330 L500 70"/>
+    <path d="M100 330 L500 330 L500 70"/>
+  </g>
+  <!-- Torres -->
+  <g stroke="#14110f" stroke-width="2">
+    <g fill="#e08a2c">
+      <rect x="92" y="190" width="16" height="16"/>
+      <rect x="232" y="322" width="16" height="16"/>
+      <rect x="225" y="242" width="16" height="16"/>
+    </g>
+    <g fill="#5a95e0">
+      <rect x="352" y="62" width="16" height="16"/>
+      <rect x="492" y="194" width="16" height="16"/>
+      <rect x="359" y="142" width="16" height="16"/>
+    </g>
+  </g>
+  <!-- Bases -->
+  <circle cx="100" cy="330" r="34" fill="#e08a2c" stroke="#14110f" stroke-width="3"/>
+  <circle cx="500" cy="70" r="34" fill="#5a95e0" stroke="#14110f" stroke-width="3"/>
+  <g fill="#e8dcc4" font-size="15" text-anchor="middle">
+    <text x="100" y="385">Base do time A</text>
+    <text x="500" y="30">Base do time B</text>
+    <text x="300" y="215" transform="rotate(-33 300 210)">lane</text>
+  </g>
+  <g fill="#a89a82" font-size="13">
+    <text x="520" y="385" text-anchor="end">■ torres que defendem cada lane</text>
+  </g>
+</svg>

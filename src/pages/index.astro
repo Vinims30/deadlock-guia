@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import Capa from '../components/Capa.astro';
+import { carregarLivro, link } from '../lib/livro';
+
+const { livro, capitulos } = await carregarLivro();
+const primeiro = capitulos[0];
+const romanos = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+---
+
+<Base titulo="Bem-vinda a Nova York">
+  <main>
+    <section class="abertura">
+      <Capa />
+      <h1>Bem-vinda a Nova York</h1>
+      <p class="subtitulo">Um manual de Deadlock para quem nunca jogou um MOBA</p>
+      {primeiro && <a class="comecar" href={link(primeiro.slug)}>Começar a ler</a>}
+    </section>
+
+    <div class="ornamento"><span>◆</span></div>
+
+    <nav class="sumario" aria-label="Sumário">
+      {
+        livro.map((secao) => (
+          <section class="secao">
+            <header>
+              <span class="numeral">Seção {romanos[secao.numero - 1]}</span>
+              <h2>{secao.titulo}</h2>
+              <p>{secao.descricao}</p>
+            </header>
+            <ol>
+              {secao.capitulos.map((c) => (
+                <li>
+                  <a href={link(c.slug)}>
+                    <span class="numero">{c.numero}</span>
+                    <span class="nome">{c.entrada.data.titulo}</span>
+                    {c.entrada.data.resumo && <span class="resumo">{c.entrada.data.resumo}</span>}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+    </nav>
+  </main>
+</Base>
+
+<style>
+  main {
+    padding: 1rem 1rem 5rem;
+  }
+
+  .abertura {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  h1 {
+    font-family: var(--fonte-capa);
+    font-weight: 400;
+    font-size: clamp(2.3rem, 8vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--dourado-forte);
+    margin: 1.5rem 0 0.5rem;
+  }
+  .subtitulo {
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+    margin: 0 0 2rem;
+  }
+  .comecar {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--dourado);
+    color: var(--dourado-forte);
+    text-decoration: none;
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .comecar:hover {
+    background: var(--dourado);
+    color: var(--fundo);
+  }
+
+  .sumario {
+    max-width: var(--largura-texto);
+    margin: 0 auto;
+  }
+  .secao {
+    margin-bottom: 3rem;
+  }
+  .secao header {
+    border-bottom: 1px solid var(--dourado);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .numeral {
+    color: var(--dourado);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .secao h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    line-height: 1.15;
+    margin: 0.1rem 0 0.25rem;
+  }
+  .secao header p {
+    margin: 0;
+    color: var(--texto-suave);
+  }
+
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li a {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    column-gap: 0.5rem;
+    padding: 0.7rem 0.5rem;
+    border-radius: 6px;
+    color: var(--texto);
+    text-decoration: none;
+  }
+  li a:hover {
+    background: var(--superficie);
+  }
+  .numero {
+    color: var(--dourado);
+    font-variant-numeric: tabular-nums;
+  }
+  .nome {
+    font-weight: 500;
+  }
+  .resumo {
+    grid-column: 2;
+    color: var(--texto-suave);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+</style>

@@ -1,0 +1,50 @@
+<button class="botao-tema" type="button" aria-label="Trocar entre tema claro e escuro" title="Trocar tema">
+  <svg class="sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor"></circle>
+    <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"></path>
+    </g>
+  </svg>
+  <svg class="lua" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="currentColor"></path>
+  </svg>
+</button>
+
+<script>
+  document.querySelector('.botao-tema')?.addEventListener('click', () => {
+    const raiz = document.documentElement;
+    const novo = raiz.dataset.theme === 'claro' ? 'escuro' : 'claro';
+    raiz.dataset.theme = novo;
+    try {
+      localStorage.setItem('tema', novo);
+    } catch {}
+  });
+</script>
+
+<style>
+  .botao-tema {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border: 1px solid var(--borda);
+    border-radius: 50%;
+    background: var(--superficie);
+    color: var(--dourado);
+    cursor: pointer;
+  }
+  .botao-tema:hover {
+    border-color: var(--dourado);
+  }
+  /* No tema escuro mostra o sol (para ir ao claro), no claro mostra a lua */
+  .lua {
+    display: none;
+  }
+  :global([data-theme='claro']) .sol {
+    display: none;
+  }
+  :global([data-theme='claro']) .lua {
+    display: block;
+  }
+</style>
