@@ -64,7 +64,8 @@ Fontes: uma serifada elegante para títulos (estilo art déco) e uma fonte de le
 
 ## Decisões em aberto
 
-- [ ] Nome do site
-- [ ] Ferramenta (proposta: Astro)
-- [ ] Publicar no GitHub e hospedar no GitHub Pages?
+- [x] Nome do site: **Bem-vinda a Nova York**
+- [x] Ferramenta: **Astro** (capítulos em Markdown)
+- [x] Publicação: **GitHub Pages** (repositório público)
+- [x] Tema: **escuro por padrão, com botão para o claro**
 - [ ] Ordem final dos capítulos
