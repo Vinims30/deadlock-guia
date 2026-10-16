@@ -1,21 +1,40 @@
-import tela from '../assets/interface/tela-provisoria.svg';
-
-// A imagem da tela do jogo usada no capítulo "Controles e interface".
-// Para trocar pelo print de verdade, mude o import acima e ajuste as áreas.
-export const imagemTela = tela;
+import partida from '../assets/interface/tela-partida.webp';
+import inicio from '../assets/interface/tela-inicio.webp';
 
 // Cada área é um retângulo em porcentagem da imagem:
 // x e y = canto superior esquerdo, l = largura, a = altura.
 // "elipse: true" desenha um círculo em vez de um retângulo.
 export type Area = { x: number; y: number; l: number; a: number; elipse?: boolean };
 
-export const areas: Record<string, Area> = {
-  times: { x: 31, y: 0.8, l: 38, a: 9.5 },
-  minimapa: { x: 1, y: 69, l: 16.5, a: 30 },
-  vida: { x: 21.5, y: 87.5, l: 20, a: 9 },
-  habilidades: { x: 41.5, y: 84.5, l: 17, a: 13 },
-  itens: { x: 58.5, y: 87, l: 14, a: 11 },
-  souls: { x: 73.5, y: 87.5, l: 9, a: 10 },
-  stamina: { x: 46.5, y: 46.5, l: 7, a: 8, elipse: true },
-  'barra-inimiga': { x: 59, y: 41, l: 7, a: 6.5, elipse: true },
-};
+// Prints da tela do jogo usados no capítulo "Controles e interface".
+export const telas = {
+  // Partida aos 24 minutos, com tudo liberado
+  partida: {
+    imagem: partida,
+    areas: {
+      times: { x: 17, y: 0, l: 66.5, a: 14 },
+      placar: { x: 43.5, y: 0.3, l: 13, a: 8 },
+      objetivo: { x: 24, y: 17, l: 9.5, a: 3.5 },
+      vida: { x: 21, y: 60.5, l: 10, a: 26 },
+      mira: { x: 46, y: 51, l: 8, a: 9, elipse: true },
+      buffs: { x: 1, y: 60.5, l: 6, a: 11 },
+      atributos: { x: 1, y: 70.5, l: 14.5, a: 9.5 },
+      souls: { x: 1, y: 80.5, l: 12.5, a: 6.5 },
+      itens: { x: 1, y: 87, l: 19.7, a: 12.5 },
+      habilidades: { x: 40.5, y: 88, l: 19, a: 12 },
+      'item-ativo': { x: 60.5, y: 89, l: 4, a: 10.5 },
+      minimapa: { x: 78, y: 58, l: 21.5, a: 41.5 },
+    },
+  },
+  // Começo da partida (0:50), com um inimigo perto
+  inicio: {
+    imagem: inicio,
+    areas: {
+      'barra-inimiga': { x: 65, y: 62.5, l: 11, a: 10.5 },
+      'melhorar-habilidade': { x: 40, y: 84.5, l: 20, a: 15.5 },
+      abates: { x: 0, y: 20, l: 14.5, a: 10 },
+    },
+  },
+} satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
+
+export type NomeTela = keyof typeof telas;

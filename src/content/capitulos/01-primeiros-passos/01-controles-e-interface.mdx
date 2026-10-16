@@ -8,80 +8,111 @@ import Pendente from '../../../components/Pendente.astro';
 
 Na primeira partida a tela parece cheia de informação. Você não precisa entender tudo de uma vez: algumas partes você vai olhar o tempo todo e outras só de vez em quando. Este capítulo mostra o que é cada coisa e quais teclas usar.
 
-<Pendente>
-  Um print da tela durante uma partida, sem nenhum menu aberto. Se der, com um inimigo à vista (para aparecer a barra de vida dele) e com alguma habilidade em recarga. Ele vai substituir o esquema provisório de todas as imagens deste capítulo.
-</Pendente>
-
-<Interface legenda="A tela durante uma partida" />
+<Interface legenda="A tela aos 24 minutos de partida" />
 
 ## A interface
 
 ### Os times, no topo
 
-<Interface destaque="times" legenda="Os dois times e o relógio da partida" />
+<Interface destaque="times" legenda="Os 12 heróis da partida" />
 
-No topo ficam os retratos dos **12 heróis da partida**: os 6 do seu time de um lado e os 6 do time inimigo do outro. No meio fica o **relógio**, que mostra há quanto tempo a partida está rolando. Vários eventos acontecem em horários marcados (você vai ver isso em *Eventos da partida*), então vale a pena dar uma olhada no relógio de vez em quando.
+No topo ficam os retratos dos **12 heróis da partida**: o seu time à esquerda, em azul, e o time inimigo à direita, em laranja. O número embaixo de cada retrato é **quanto aquele jogador já juntou de souls** na partida, o que dá uma boa ideia de quem está mais forte.
 
-Quando alguém morre, o retrato fica apagado até a pessoa renascer. Isso responde uma pergunta importante: **quantos inimigos estão vivos agora?** Se três inimigos acabaram de morrer, é uma ótima hora para o seu time atacar um objetivo.
+Quando alguém morre, o retrato fica cinza e aparece um **número vermelho**: são os segundos até a pessoa renascer. No print, dois heróis do seu time estão mortos (17 e 5 segundos). Isso responde uma pergunta importante: **quantos inimigos estão vivos agora?** Se três inimigos acabaram de morrer, é uma ótima hora para o seu time atacar um objetivo.
 
-<Pendente tipo="conferir">
-  Confirmar se o retrato de quem morreu mostra o tempo até renascer.
-</Pendente>
+<Interface destaque="placar" legenda="O relógio e o total de souls de cada time" />
+
+No meio fica o **relógio** da partida. Vários eventos acontecem em horários marcados (você vai ver isso em *Eventos da partida*), então vale a pena dar uma olhada nele de vez em quando. Embaixo do relógio fica a **soma das souls de cada time**: no print, 149 mil contra 142 mil. É o jeito mais rápido de saber quem está ganhando.
 
 ### Sua vida
 
-<Interface destaque="vida" legenda="Sua barra de vida" />
+<Interface destaque="vida" legenda="A barra de vida, ao lado do seu herói" />
 
-A barra de vida mostra quanto dano você ainda aguenta. Se ela chegar a zero, você morre e precisa esperar um tempo para renascer na base. Por isso, **recuar com pouca vida não é covardia, é estratégia**: morrer custa tempo e dá souls para o inimigo.
+A barra inclinada ao lado do seu herói é a sua **vida**: o número grande é quanto você tem agora e o pequeno é o máximo. Se ela chegar a zero, você morre e precisa esperar para renascer na base. Por isso, **recuar com pouca vida não é covardia, é estratégia**: morrer custa tempo e dá souls para o inimigo.
 
-### Stamina, perto da mira
+### A mira, a munição e a stamina
 
-<Interface destaque="stamina" legenda="A mira e a stamina logo abaixo dela" />
+<Interface destaque="mira" legenda="A mira, com a stamina em volta e a munição embaixo" />
 
-Os tracinhos logo abaixo da mira são a sua **stamina**. Cada dash ou pulo extra gasta um tracinho, e eles voltam sozinhos com o tempo. Se a stamina acabar, você fica sem como fugir rápido. Então, guardar pelo menos um tracinho para escapar é um bom hábito.
+No centro da tela fica a **mira**. Logo embaixo dela aparece a **munição**: quantas balas ainda tem no pente e o total do pente (no print, 38 de 38).
 
-<Pendente tipo="conferir">
-  Confirmar se a stamina continua aparecendo embaixo da mira depois da atualização de 29/09.
-</Pendente>
+Os arcos em volta da mira são a sua **stamina**. Cada dash ou pulo extra gasta um pedaço, e ela volta sozinha com o tempo. Sem stamina, você fica sem como fugir rápido. Então, guardar pelo menos um pedaço para escapar é um bom hábito.
+
+### Seus atributos e bônus
+
+<Interface destaque="atributos" legenda="Os três atributos do seu herói" />
+
+Os três círculos mostram a força do seu herói em cada uma das **três categorias** do jogo:
+
+- **Laranja (arma):** o bônus de dano dos seus tiros.
+- **Roxo (spirit):** a força das suas habilidades.
+- **Verde (vitalidade):** a sua vida máxima.
+
+Essas mesmas três cores aparecem nos itens da loja. Cada item melhora uma delas, e é por isso que elas vão aparecer de novo em *As três categorias*.
+
+<Interface destaque="buffs" legenda="Bônus temporários" />
+
+Os quadradinhos verdes logo acima são **bônus temporários** que você pegou pelo mapa, como mais vida ou mais velocidade. Quando aparecem em vermelho, são **penalidades**, normalmente causadas por uma habilidade inimiga.
+
+### Suas souls
+
+<Interface destaque="souls" legenda="As souls que você tem para gastar" />
+
+Este número mostra quantas **souls** você tem para gastar na loja. Souls são a moeda do jogo: você ganha souls matando tropas, monstros e heróis inimigos. Elas também deixam o seu herói mais forte sozinhas, e é por isso que são tão importantes. O capítulo *Souls: dinheiro e nível* explica tudo isso.
+
+Logo embaixo, em vermelho, ficam as **Haunted Souls**. São as souls que você ganhou na jungle e nas caixas e que ainda **não estão garantidas**: se você morrer, perde parte delas. Com o tempo elas viram souls normais e o risco acaba. Então, depois de farmar bastante na jungle, cuidado para não morrer logo em seguida.
+
+### Os itens
+
+<Interface destaque="itens" legenda="Os espaços de itens" />
+
+Aqui ficam os **itens** que você comprou na loja. Os espaços com **cadeado** são espaços extras, que o seu time libera derrubando objetivos do inimigo (mais sobre isso em *A loja e os preços*).
+
+<Interface destaque="item-ativo" legenda="Um item ativo, ao lado das habilidades" />
+
+A maioria dos itens é **passiva**: ela funciona sozinha. Alguns têm um efeito que precisa ser acionado, como uma cura ou um pulo extra. Esses são os **itens ativos**. Eles aparecem também ao lado das habilidades, com a tecla para usar embaixo.
 
 ### As habilidades
 
 <Interface destaque="habilidades" legenda="As quatro habilidades do seu herói" />
 
-Cada herói tem **quatro habilidades**, usadas com as teclas <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>. A quarta é a **ultimate**, a mais forte, que demora mais para recarregar.
+Cada herói tem **quatro habilidades**. A letra embaixo de cada ícone é a tecla que usa aquela habilidade. A última é a **ultimate**, a mais forte, que demora mais para recarregar.
 
-As habilidades **não gastam mana nem energia**. Depois de usar uma, ela entra em **recarga**: o ícone escurece e mostra um contador até poder ser usada de novo. No começo da partida nem todas estão liberadas. Você vai desbloqueando e melhorando cada uma ao longo do jogo (mais sobre isso em *Heróis e habilidades*).
+As habilidades **não gastam mana nem energia**. Depois de usar uma, ela entra em **recarga** e o ícone mostra um contador até poder ser usada de novo. No print, a ultimate ainda precisa de 25 segundos.
 
-### Os itens ativos
+<Interface tela="inicio" destaque="melhorar-habilidade" legenda="No começo da partida, quase todas as habilidades estão bloqueadas" />
 
-<Interface destaque="itens" legenda="Os espaços dos itens ativos" />
-
-Alguns itens que você compra na loja têm um efeito que precisa ser acionado, como uma cura ou um pulo extra. Esses são os **itens ativos**, usados com <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd>. A maioria dos itens é **passiva**: ela funciona sozinha e não aparece aqui.
-
-### Suas souls
-
-<Interface destaque="souls" legenda="Quantas souls você tem" />
-
-Este número mostra quantas **souls** você tem. Souls são a moeda do jogo: você ganha souls matando tropas, monstros e heróis inimigos e gasta na loja. Elas também fazem o seu herói ficar mais forte sozinhas, e é por isso que elas são tão importantes. O capítulo *Souls: dinheiro e nível* explica isso direitinho.
+No começo da partida quase todas as habilidades estão **bloqueadas** (os ícones apagados). O número verde embaixo delas mostra quantos **pontos** você tem para desbloquear ou melhorar habilidades. Para usar um ponto, **segure <kbd>Tab</kbd>** e escolha a habilidade. O jogo marca uma delas como **Recommended** para ajudar quem está começando. Você ganha mais pontos juntando souls (mais sobre isso em *Heróis e habilidades*).
 
 ### O minimapa
 
 <Interface destaque="minimapa" legenda="O minimapa" />
 
-O minimapa é um desenho do mapa inteiro visto de cima. Nele aparecem você, o seu time, as tropas, as torres de cada lane e os inimigos que alguém do seu time está vendo.
+O minimapa é um desenho do mapa inteiro visto de cima. A sua base fica embaixo e a do inimigo em cima. As três linhas coloridas são as **três lanes**, e os losangos são as torres de cada lane. Os retratos pequenos são os heróis: os do seu time e os inimigos que alguém do seu time está vendo.
+
+Embaixo do minimapa aparece o nome do lugar onde você está, como "Broadway: Downtown". Broadway é a lane e Downtown é a região.
 
 Olhar o minimapa é um hábito que separa jogadores novos dos experientes. Uma regra simples: **se você não vê no minimapa um inimigo que estava na sua lane, ele pode estar vindo te pegar de surpresa.**
 
 ### As barras de vida em cima dos heróis
 
-<Interface destaque="barra-inimiga" legenda="A barra de vida de um inimigo" />
+<Interface tela="inicio" destaque="barra-inimiga" legenda="A barra de vida de um inimigo" />
 
-Todo herói tem uma barra de vida flutuando em cima da cabeça. Ela mostra mais do que a vida:
+Todo herói tem uma barra de vida flutuando em cima da cabeça, com o nome do jogador. Ela mostra mais do que a vida:
 
+- **As setinhas (›)** em cima da barra mostram a **stamina** dele. Para os inimigos elas só aparecem por alguns segundos depois de um dash. Se ele acabou de gastar tudo, não tem como fugir.
+- **O ícone à esquerda** mostra se a **ultimate** dele está pronta. Um inimigo com a ultimate pronta ainda tem a habilidade mais forte guardada.
 - **Azul-claro** no fim da barra é **escudo**, uma vida extra temporária que some antes da vida de verdade.
-- **Verde** é a cura que o herói está recebendo.
-- **Um ícone de olho** mostra se a **ultimate** dele está pronta (olho aberto) ou em recarga (olho fechado). Um inimigo de olho aberto ainda tem a habilidade mais forte guardada.
-- **Setinhas (›)** em cima da barra mostram a **stamina**. Para os inimigos elas só aparecem por alguns segundos depois de um dash. Se ele acabou de gastar tudo, não tem como fugir.
+
+### Avisos na tela
+
+<Interface destaque="objetivo" legenda="Uma sugestão do jogo" />
+
+De vez em quando o jogo sugere o que fazer, como "Push the York Walker" ("empurre até o Walker da York"). Para quem está começando, seguir essas sugestões é uma boa forma de ajudar o time.
+
+<Interface tela="inicio" destaque="abates" legenda="Quem derrotou quem" />
+
+No canto esquerdo aparecem os **abates**: quem derrotou quem e quantas souls ganhou com isso.
 
 ## As teclas
 
@@ -111,7 +142,7 @@ Estas são as teclas padrão. Você pode trocar qualquer uma em **Configuraçõe
 | Tecla | O que faz |
 | --- | --- |
 | <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> | Usar as habilidades (a 4 é a ultimate) |
-| <kbd>Alt</kbd> + <kbd>1</kbd>–<kbd>4</kbd> | Melhorar uma habilidade |
+| Segurar <kbd>Tab</kbd> | Escolher uma habilidade para desbloquear ou melhorar |
 | <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd> | Usar os itens ativos |
 
 ### Loja e comunicação
@@ -125,7 +156,7 @@ Estas são as teclas padrão. Você pode trocar qualquer uma em **Configuraçõe
 | <kbd>Shift</kbd> + <kbd>Enter</kbd> | Chat para todos, incluindo os inimigos |
 
 <Pendente tipo="conferir">
-  Confirmar no jogo (Configurações → Teclas): melhorar habilidade com Alt + número, o ping na rodinha do mouse e o zoom no botão direito. As fontes que achei não concordam entre si sobre essas três.
+  Os prints mostram as habilidades em Q, E, C e X, e não em 1, 2, 3 e 4. Confirmar quais são as teclas padrão hoje (Configurações → Teclas → restaurar padrão) e ajustar as tabelas. Conferir também o ping na rodinha do mouse e o zoom no botão direito.
 </Pendente>
 
 > **Dica:** o <kbd>Tab</kbd> é um dos atalhos mais úteis para quem está começando. Ele mostra quem está ganhando em souls e o que cada inimigo comprou.

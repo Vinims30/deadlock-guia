@@ -1,20 +1,23 @@
 ---
 // Mostra a imagem da tela do jogo escurecida, com só as áreas pedidas em destaque.
 // Uso no capítulo (.mdx):  <Interface destaque="minimapa" legenda="O minimapa" />
-// Vários destaques:        <Interface destaque={['vida', 'stamina']} />
+// Vários destaques:        <Interface destaque={['vida', 'mira']} />
+// Outro print:             <Interface tela="inicio" destaque="barra-inimiga" />
 // Sem destaque mostra a tela inteira.
-import { areas, imagemTela } from '../data/interface';
+import { telas, type Area, type NomeTela } from '../data/interface';
 
 interface Props {
+  tela?: NomeTela;
   destaque?: string | string[];
   legenda?: string;
 }
 
-const { destaque = [], legenda } = Astro.props;
+const { tela = 'partida', destaque = [], legenda } = Astro.props;
+const { imagem: imagemTela, areas } = telas[tela];
 const nomes = Array.isArray(destaque) ? destaque : [destaque];
 const marcadas = nomes.map((nome) => {
-  const area = areas[nome];
-  if (!area) throw new Error(`Área "${nome}" não existe em src/data/interface.ts`);
+  const area = (areas as Record<string, Area>)[nome];
+  if (!area) throw new Error(`Área "${nome}" não existe na tela "${tela}" (src/data/interface.ts)`);
   return area;
 });
 const proporcao = imagemTela.width / imagemTela.height;
