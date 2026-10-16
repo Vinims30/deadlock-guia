@@ -158,8 +158,8 @@ img {
   border: 1px solid var(--borda);
 }
 
-/* As imagens com destaque (componente Interface) têm o próprio estilo */
-.prosa img:not(.quadro img) {
+/* As imagens com destaque (Interface) e os ícones de herói (Heroi) têm o próprio estilo */
+.prosa img:not(.quadro img, .retrato) {
   display: block;
   margin: 2rem auto;
   border-radius: 8px;

@@ -1,0 +1,67 @@
+---
+// Ficha de um herói: ícone, nome, função e um texto.
+// Uso no capítulo (.mdx):
+//   import abrams from './imagens/herois/abrams.webp';
+//   <Heroi nome="Abrams" funcao="Tanque" imagem={abrams}> texto </Heroi>
+import { Image } from 'astro:assets';
+
+interface Props {
+  nome: string;
+  funcao: string;
+  imagem: ImageMetadata;
+}
+
+const { nome, funcao, imagem } = Astro.props;
+const id = nome.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+---
+
+<section class="heroi" aria-labelledby={id}>
+  <header>
+    <Image src={imagem} alt="" width={88} height={88} class="retrato" />
+    <div>
+      <h3 id={id}>{nome}</h3>
+      <p class="funcao">{funcao}</p>
+    </div>
+  </header>
+  <div class="texto"><slot /></div>
+</section>
+
+<style>
+  .heroi {
+    margin: 2rem 0;
+    padding: 1.25rem 1.25rem 0.5rem;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--superficie);
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  /* O ícone não leva o estilo nem o zoom das outras imagens */
+  .heroi :global(.retrato) {
+    width: 88px;
+    height: 88px;
+    margin: 0;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: default;
+  }
+  h3 {
+    margin: 0 !important;
+    font-size: 1.7rem !important;
+  }
+  .funcao {
+    margin: 0.1rem 0 0;
+    color: var(--dourado);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .texto :global(ul) {
+    margin-top: 0.75rem;
+  }
+</style>

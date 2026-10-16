@@ -29,7 +29,7 @@
 
   // Imagens comuns
   document.querySelectorAll<HTMLImageElement>('.prosa img').forEach((img) => {
-    if (img.closest('.quadro')) return;
+    if (img.closest('.quadro') || img.classList.contains('retrato')) return;
     img.addEventListener('click', () => {
       abrir(img.currentSrc || img.src, img.alt, img.naturalWidth || 16, img.naturalHeight || 9);
     });
