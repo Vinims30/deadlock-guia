@@ -1,0 +1,79 @@
+---
+titulo: "Heróis e habilidades"
+resumo: "Quatro habilidades por herói, sem mana, só recarga. Como desbloquear e melhorar cada uma."
+---
+
+import Interface from '../../../components/Interface.astro';
+
+Cada herói de Deadlock tem duas formas de lutar: a **arma**, que todo herói tem e é diferente para cada um, e **quatro habilidades** próprias. A quarta é a **ultimate**, a mais forte de todas. Você já viu exemplos disso nas fichas de *Heróis para começar*.
+
+## Sem mana, só recarga
+
+Em muitos jogos, usar uma habilidade gasta mana ou energia. Em Deadlock, não: você pode usar qualquer habilidade sempre que ela estiver pronta. Depois de usar, ela entra em **recarga** (o famoso **cooldown**) e o ícone mostra quanto tempo falta para poder usar de novo.
+
+Isso muda o jeito de pensar uma luta: a pergunta não é "tenho mana?", e sim **"minhas habilidades estão prontas?"**. Começar uma briga com as habilidades em recarga é pedir para perder.
+
+## Tipos de habilidade
+
+Nem toda habilidade funciona do mesmo jeito:
+
+| Tipo | Como funciona | Exemplo |
+| --- | --- | --- |
+| **Instantânea** | Aperta, acontece, entra em recarga | Shoulder Charge, do Abrams |
+| **Com cargas** | Dá para usar várias vezes seguidas. Cada carga recarrega separada | Mini Turret, da McGinnis |
+| **Canalizada** | Você precisa segurar por um tempo. Se for atordoado no meio, ela é interrompida. Pular também cancela | Naptime, do Rem |
+| **Passiva** | Funciona sozinha, sem apertar nada | Infernal Resilience, do Abrams |
+
+## Desbloqueando as habilidades
+
+Você não começa a partida com todas as habilidades. Elas vão sendo **desbloqueadas** conforme você junta souls:
+
+| Souls juntadas | O que libera |
+| --- | --- |
+| 600 (já no começo) | A primeira habilidade |
+| 1.100 | A segunda |
+| 2.000 | A terceira |
+| 3.800 | A **ultimate** |
+
+As três primeiras você escolhe na ordem que quiser. A ultimate sempre vem por último. Atenção: **o desbloqueio não pode ser desfeito**, então pense antes de escolher.
+
+## Melhorando as habilidades
+
+Nos níveis que não desbloqueiam uma habilidade, você ganha **pontos de habilidade**. Cada habilidade tem **três melhorias**, e cada uma custa mais que a anterior:
+
+| Melhoria | Custo |
+| --- | --- |
+| 1ª | 1 ponto |
+| 2ª | 2 pontos |
+| 3ª | 5 pontos |
+
+Melhorar uma habilidade até o fim custa **8 pontos**. Ao longo da partida você ganha **32 pontos**, o suficiente para melhorar as quatro habilidades até o fim, se a partida durar bastante.
+
+Para usar os pontos, segure <kbd>Tab</kbd> e escolha a habilidade. O número verde embaixo das habilidades mostra quantos pontos você tem, e o jogo marca uma delas como **Recommended** para ajudar:
+
+<Interface tela="inicio" destaque="melhorar-habilidade" legenda="Segure Tab para melhorar uma habilidade" />
+
+Escolheu errado? Clique com o **botão direito** na habilidade em até 10 segundos, antes de usar, e o ponto volta.
+
+> **Dica:** a 3ª melhoria costuma ser a que muda o jogo, e ela custa 5 pontos de uma vez. Às vezes vale a pena **guardar pontos** para comprá-la logo, em vez de espalhar um ponto em cada habilidade.
+
+## Spirit power: o que deixa as habilidades mais fortes
+
+O dano de uma habilidade tem duas partes:
+
+1. Um **valor base**, que só aumenta com as melhorias (os pontos de habilidade).
+2. Uma parte que vem do seu **spirit power**, o atributo roxo que aparece em *Controles e interface*.
+
+O spirit power vem principalmente dos **itens de spirit** (os roxos da loja) e um pouco de cada nível. Por isso, heróis que dependem das habilidades costumam comprar muitos itens roxos, enquanto heróis que dependem da arma compram itens laranja. Você vai ver isso direitinho em *As três categorias*.
+
+Algumas habilidades usam o spirit power para outras coisas além do dano, como a duração ou o alcance. E algumas crescem com o dano da arma ou do melee, em vez do spirit power.
+
+## Quando você não consegue usar habilidades
+
+Algumas habilidades inimigas te impedem de usar as suas:
+
+- **Atordoado** (*stun*): você não consegue fazer nada por um instante.
+- **Silenciado** (*silence*): você ainda anda e atira, mas não usa habilidades.
+- **Deslocado**: enquanto você está sendo empurrado ou puxado por uma habilidade inimiga, também não consegue usar as suas.
+
+As passivas continuam funcionando, porque não dependem de você apertar nada.
