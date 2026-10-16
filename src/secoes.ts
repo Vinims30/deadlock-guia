@@ -7,14 +7,14 @@ export const secoes = [
     descricao: 'O objetivo, os eventos e as fases de uma partida.',
   },
   {
-    pasta: '02-composicao',
-    titulo: 'Composição de equipes',
-    descricao: 'As funções de cada personagem e quem faz o quê.',
-  },
-  {
-    pasta: '03-mapa-e-macro',
+    pasta: '02-mapa-e-macro',
     titulo: 'Mapa e macro',
     descricao: 'Lanes, jungle, caixas e os objetivos com hora marcada.',
+  },
+  {
+    pasta: '03-composicao',
+    titulo: 'Composição de equipes',
+    descricao: 'As funções de cada personagem e quem faz o quê.',
   },
   {
     pasta: '04-gameplay',
