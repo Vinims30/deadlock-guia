@@ -46,8 +46,8 @@ Paleta inicial (ainda vamos ajustar):
 | Superfície        | `#1e1a16` | couro escuro                       |
 | Texto             | `#e8dcc4` | pergaminho                         |
 | Destaque          | `#c9a14a` | latão / dourado art déco           |
-| Time Amber Hand   | `#e08a2c` | âmbar                              |
-| Time Sapphire Flame | `#3f7fd0` | safira                           |
+| Destaque âmbar    | `#e08a2c` | âmbar (as mãos do Hidden King)     |
+| Destaque safira   | `#3f7fd0` | safira (a chama da Archmother)     |
 
 Fontes: uma serifada elegante para títulos (estilo art déco) e uma fonte de leitura confortável para o texto.
 

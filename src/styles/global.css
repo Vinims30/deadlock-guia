@@ -187,7 +187,7 @@ img {
   font-weight: 600;
 }
 
-/* Cores dos times, para usar no texto: <span class="ambar">Amber Hand</span> */
+/* Destaques coloridos no texto: <span class="ambar">texto</span> e <span class="safira">texto</span> */
 .ambar {
   color: var(--ambar);
   font-weight: 600;
@@ -220,7 +220,8 @@ img {
   .prosa {
     --largura-imagem: min(64rem, calc(100vw - 6rem));
   }
-  .prosa img:not(.quadro img, .retrato),
+  /* Diagramas (.svg) continuam na largura do texto; só os prints ficam largos */
+  .prosa img:not(.quadro img, .retrato, [src$='.svg']),
   .prosa figure.interface {
     width: var(--largura-imagem);
     max-width: none;

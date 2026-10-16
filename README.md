@@ -39,7 +39,7 @@ Depois abra <http://localhost:4321/deadlock-guia/>. A página atualiza sozinha s
 3. Deixe o título e o resumo entre aspas. Escreva o texto em Markdown abaixo disso. Use `##` para subtítulos.
 4. Para colocar uma imagem: `![descrição da imagem](./imagens/arquivo.png)`.
 
-Para destacar os times no texto, use `<span class="ambar">Amber Hand</span>` e `<span class="safira">Sapphire Flame</span>`.
+Para destacar algo em âmbar ou azul no texto, use `<span class="ambar">texto</span>` ou `<span class="safira">texto</span>`.
 
 ## Recursos extras nos capítulos (arquivos `.mdx`)
 
