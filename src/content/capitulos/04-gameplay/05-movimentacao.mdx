@@ -4,7 +4,8 @@ resumo: "Stamina, dash, pulo duplo, deslizar e como combinar os movimentos."
 ---
 
 import Interface from '../../../components/Interface.astro';
-import Pendente from '../../../components/Pendente.astro';
+import { Image } from 'astro:assets';
+import staminaAzul from './imagens/dash-stamina-azul.webp';
 
 Em Deadlock, os heróis se movem muito: correm, pulam duas vezes, dão impulsos rápidos e deslizam. Saber se mexer bem faz você chegar antes, desviar de tiros e fugir quando a luta vira. Este capítulo mostra o básico. Os truques mais avançados ficam para *Movimentação avançada*.
 
@@ -61,9 +62,9 @@ Com isso, dá para subir em telhados e muros sem procurar uma corda.
 
 Andando rápido (correndo, logo depois de um dash ou descendo uma escada), aperte <kbd>Ctrl</kbd> e o herói **desliza** pelo chão, mantendo a velocidade. É ótimo para emendar com outros movimentos e para passar por baixo de tiros.
 
-<Pendente>
-  O herói deslizando pelo chão.
-</Pendente>
+![A heroína deslizando pelo chão e atravessando uma caixa de madeira, que se despedaça em volta dela](./imagens/deslizando-caixa.webp)
+
+*Deslizando por cima de uma caixa: ela quebra sozinha, sem precisar de tiro nem melee.*
 
 ## Dash e pulo juntos: o dash jump
 
@@ -71,9 +72,9 @@ O primeiro combo que vale aprender é o **dash jump**: dê um dash e **pule logo
 
 O tempo certo aparece na tela: durante o dash, as barras de stamina embaixo da mira ficam **azuis**. Pule enquanto elas estiverem azuis.
 
-<Pendente>
-  As barras de stamina azuis embaixo da mira, durante um dash.
-</Pendente>
+<Image src={staminaAzul} class="estreita" alt="A heroína no meio de um dash, inclinada para a frente, com a barra de stamina embaixo da mira em azul" />
+
+*No meio do dash, a stamina embaixo da mira fica azul. É a hora de pular.*
 
 O dash jump gasta **2 barras** (uma do dash e uma do pulo), então use quando valer a pena: para fugir de verdade ou chegar a tempo num objetivo.
 
