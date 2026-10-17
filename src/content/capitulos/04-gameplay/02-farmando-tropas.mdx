@@ -4,7 +4,6 @@ resumo: "Garantir os orbes, roubar os do inimigo e farmar sem se machucar."
 ---
 
 import Interface from '../../../components/Interface.astro';
-import Pendente from '../../../components/Pendente.astro';
 
 As tropas são a sua principal fonte de souls durante boa parte da partida. Cada uma vale **100 souls** no começo, e chega uma wave nova a cada 30 segundos. Farmar bem as tropas é a diferença entre sair da lane com itens bons ou atrasado.
 
@@ -25,9 +24,7 @@ Quando uma tropa inimiga morre, sobe um **orbe verde** flutuante. Acerte um tiro
 
 <Interface tela="wave" destaque="souls-ganhas" legenda="Souls garantidas: o valor aparece em verde no meio da tela" />
 
-<Pendente>
-  Um orbe verde flutuando logo depois de uma tropa inimiga morrer.
-</Pendente>
+<Interface tela="orbe-verde" destaque="orbe" legenda="Um tiro acertando o orbe de uma tropa inimiga: as 25 souls aparecem na hora" />
 
 Dicas:
 
@@ -39,9 +36,7 @@ Dicas:
 
 Quando uma tropa **do seu time** morre, sobe um **orbe laranja**: esse é do inimigo. Se você acertar primeiro, ele perde essas souls. É o **deny**.
 
-<Pendente>
-  Um orbe laranja flutuando, de uma tropa do seu time que acabou de morrer.
-</Pendente>
+<Interface tela="orbe-laranja" destaque="orbe" legenda="Um orbe com borda laranja: veio de uma tropa do seu time, e é do inimigo se você não acertar primeiro" />
 
 O deny é tão importante quanto garantir os seus orbes: cada orbe negado é dinheiro a menos para o adversário. Na lane, os dois jogadores ficam disputando cada orbe.
 
@@ -55,9 +50,7 @@ Mas o melee exige chegar perto, no meio das tropas inimigas e ao alcance do her�
 
 Quando você mata o **médico** da wave inimiga, ele deixa cair um **pacote de cura**. Pegue: ele cura você e os aliados por perto, e cura mais quem está com menos vida. O time do médico não pode pegar o pacote.
 
-<Pendente>
-  O pacote de cura que o médico inimigo deixa cair.
-</Pendente>
+<Interface tela="pacote-medico" destaque="pacote" legenda="O pacote de cura do médico: uma cruz verde no chão, com um feixe de luz verde em cima" />
 
 Por isso, quando estiver com pouca vida na lane, vale **mirar no médico** inimigo primeiro.
 

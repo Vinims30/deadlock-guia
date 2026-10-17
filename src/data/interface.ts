@@ -4,6 +4,9 @@ import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
 import steamVent from '../assets/interface/tela-steam-vent.webp';
 import morcego from '../assets/interface/tela-morcego.webp';
 import wave from '../assets/interface/tela-wave.webp';
+import orbeVerde from '../assets/interface/tela-orbe-verde.webp';
+import orbeLaranja from '../assets/interface/tela-orbe-laranja.webp';
+import pacoteMedico from '../assets/interface/tela-pacote-medico.webp';
 
 // Cada área é um retângulo em porcentagem da imagem:
 // x e y = canto superior esquerdo, l = largura, a = altura.
@@ -67,6 +70,27 @@ export const telas = {
     imagem: wave,
     areas: {
       'souls-ganhas': { x: 45, y: 64.5, l: 4.8, a: 5.5 },
+    },
+  },
+  // Tiro acertando o orbe verde de uma tropa inimiga, nas docas de York
+  'orbe-verde': {
+    imagem: orbeVerde,
+    areas: {
+      orbe: { x: 58.5, y: 32, l: 7.5, a: 13 },
+    },
+  },
+  // Orbe laranja de uma tropa aliada, nas docas de York
+  'orbe-laranja': {
+    imagem: orbeLaranja,
+    areas: {
+      orbe: { x: 41.3, y: 35.8, l: 3.8, a: 7.6, elipse: true },
+    },
+  },
+  // Pacote de cura do médico inimigo, no chão de uma lane
+  'pacote-medico': {
+    imagem: pacoteMedico,
+    areas: {
+      pacote: { x: 53.5, y: 30, l: 3.8, a: 18.5 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
