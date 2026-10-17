@@ -167,6 +167,11 @@ img {
   box-shadow: 0 8px 24px var(--sombra);
   cursor: zoom-in;
 }
+/* Imagens em pé ou quadradas (ex.: o minimapa) ficam menores que o texto */
+.prosa img.estreita {
+  width: min(100%, 28rem);
+  height: auto;
+}
 
 .prosa table {
   width: 100%;
@@ -220,8 +225,8 @@ img {
   .prosa {
     --largura-imagem: min(64rem, calc(100vw - 6rem));
   }
-  /* Diagramas (.svg) continuam na largura do texto; só os prints ficam largos */
-  .prosa img:not(.quadro img, .retrato, [src$='.svg']),
+  /* Diagramas (.svg) e imagens .estreita não alargam; só os prints deitados ficam largos */
+  .prosa img:not(.quadro img, .retrato, .estreita, [src$='.svg']),
   .prosa figure.interface {
     width: var(--largura-imagem);
     max-width: none;

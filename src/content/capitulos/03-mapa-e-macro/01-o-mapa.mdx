@@ -3,17 +3,20 @@ titulo: "O mapa"
 resumo: "As três lanes, os distritos entre elas, as bases e onde comprar itens."
 ---
 
-import Pendente from '../../../components/Pendente.astro';
+import { Image } from 'astro:assets';
+import minimapa from './imagens/minimapa.webp';
 
 Deadlock se passa numa **Nova York mágica dos anos 1920**, e o mapa é a cidade inteira: avenidas, prédios, telhados, becos e túneis. No começo parece um labirinto, mas a ideia é simples: **três avenidas ligando as duas bases**, com bairros entre elas.
 
-<Pendente>
-  O minimapa aberto logo no começo de uma partida (ou no Explore NYC), com os nomes dos lugares aparecendo.
-</Pendente>
+## Lendo o minimapa
 
-## O minimapa está sempre do seu lado
+<Image src={minimapa} class="estreita" alt="O minimapa: a base do jogador embaixo, a base inimiga em cima, e as três lanes ligando as duas, em amarelo à esquerda, azul no meio e verde à direita" />
 
-Um detalhe que confunde no começo: o minimapa **gira conforme o seu time**. A sua base fica sempre **embaixo** e a base inimiga sempre **em cima**. Por isso, a lane que fica à esquerda para você fica à direita para o inimigo.
+- **A sua base fica sempre embaixo** e a base inimiga sempre **em cima**. O minimapa gira conforme o seu time, então a lane que fica à esquerda para você fica à direita para o inimigo.
+- **As três linhas** que ligam as bases são as **lanes**. Do lado do seu time, cada uma tem a sua cor. Do lado inimigo, tudo fica **vermelho**.
+- **Os losangos** são as estruturas que você viu em *Como se ganha*: os pequenos são as Guardians e as Base Guardians, os grandes são os Walkers.
+- **No centro** fica o ícone do **Mid-Boss**.
+- **No canto de baixo**, uma plaquinha diz **onde você está**, sempre no formato *lugar : ponto*. Nesta imagem, "Hidden King : Base".
 
 ## As três lanes
 
@@ -31,17 +34,21 @@ As cores aparecem no minimapa e nas ziplines, e os nomes aparecem nos pings. Qua
 
 **Broadway** é a lane do **meio**. É a mais curta e o caminho mais direto até a base inimiga, por isso é considerada a mais importante. Embaixo dela, no esgoto bem abaixo da **Times Square**, fica o fosso do **Mid-Boss** (que você conheceu em *Eventos da partida*).
 
-<Pendente>
-  A Times Square, de preferência com a Guardian ou o Walker de Broadway aparecendo.
-</Pendente>
+![A Times Square: uma avenida com faixas de pedestre, a Guardian de Broadway (um grande robô de metal) no meio da rua e a loja da lane, com a placa Curiosity, à direita](./imagens/broadway-times-square.webp)
+
+*A Times Square, em Broadway. O robô no meio da rua é a Guardian, e à direita fica a loja da lane.*
 
 ### York e Greenwich, as laterais
 
 **York** e **Greenwich** ficam nas laterais. Para o time do **Hidden King**, York fica à esquerda e Greenwich à direita. Para o time da **Archmother**, é o contrário. A **Soul Urn** e o **Unstable Rift** aparecem sempre numa dessas duas.
 
-<Pendente>
-  Um lugar marcante de cada lateral: o Central Park (Greenwich) e o porto ou a Bolsa de Valores (York).
-</Pendente>
+![As docas de York: armazéns de madeira, caixotes e uma ponte de trilhos sobre a água, com uma luz verde-azulada](./imagens/york-docas.webp)
+
+*As docas de York, perto do Píer 16. Essa ponte é um dos lugares onde aparece o Unstable Rift: repare no contador de 1.482 souls no topo da tela.*
+
+![O Central Park, em Greenwich: uma árvore enorme e retorcida, prédios antigos, um coreto e uma torre com relógio e sino, tudo em tons de verde](./imagens/greenwich-central-park.webp)
+
+*O Central Park, em Greenwich. A árvore enorme à esquerda é a Hangman's Elm, que tem uns 300 anos.*
 
 ## Os distritos entre as lanes
 
@@ -71,9 +78,9 @@ No fundo de cada base fica a **sala de spawn**, onde você começa a partida e r
 
 Entre a sala de spawn e as lanes ficam as estruturas que você viu em *Como se ganha*: as Shrines, o Patron e as Base Guardians na saída de cada lane.
 
-<Pendente>
-  A sala de spawn do seu time, de preferência com a loja aparecendo.
-</Pendente>
+![A sala de spawn do Hidden King: um palco de fábrica com cortinas vermelhas, a loja Curiosity à esquerda e três ziplines saindo pelo fundo, em verde, azul e amarelo](./imagens/base-hidden-king.webp)
+
+*A sala de spawn do Hidden King. A loja fica à esquerda, e as três ziplines saem pelo fundo, cada uma na cor da sua lane.*
 
 ## Onde comprar itens
 
@@ -87,9 +94,19 @@ Você não precisa voltar para a base toda vez que quiser comprar alguma coisa. 
 
 Na prática: no começo, compre na loja da sua lane, que fica pertinho. Depois que a sua Guardian cair, use a loja secreta ou volte para a base.
 
-<Pendente>
-  A loja da lane, ao lado da Guardian, e a entrada de uma loja secreta (a escada ou o bueiro aberto).
-</Pendente>
+![A loja da lane em Broadway: uma carrocinha de madeira com a placa Curiosity iluminada, embaixo de um viaduto](./imagens/loja-da-lane.webp)
+
+*A loja da lane em Broadway, pertinho da Guardian. Todas as lojas têm essa cara: uma carrocinha com a placa "Curiosity".*
+
+![Uma loja secreta: a mesma carrocinha Curiosity, mas dentro de um túnel de metrô com paredes de azulejo](./imagens/loja-secreta.webp)
+
+*Uma loja secreta, num túnel de metrô embaixo de Chinatown.*
+
+Perto das lojas secretas também ficam os **teleportes**, cabines que levam você para o outro lado do mapa. Placas na parede mostram o caminho:
+
+![A entrada de um teleporte: uma porta com a placa Teleporter, e na parede ao lado as placas To Greenwich e To Curiosity Shop](./imagens/teleporte.webp)
+
+Você vai ver como eles funcionam em *Como se locomover*.
 
 ## Em cima e embaixo
 

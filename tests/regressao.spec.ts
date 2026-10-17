@@ -164,3 +164,21 @@ test('ícone de herói não abre zoom', async ({ page }) => {
   await icone.click();
   await expect(page.locator('dialog.ampliar[open]')).toHaveCount(0);
 });
+
+test('imagens em pé ou quadradas não são esticadas na tela larga', async ({ page }) => {
+  // Bug: o recorte do minimapa (quase quadrado) era esticado até 64rem na tela larga
+  // e ocupava a tela inteira. Só prints deitados podem passar da largura do texto.
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  for (const p of await todasAsPaginas(page)) {
+    await page.goto(p);
+    await rolarTudo(page);
+    await esperarImagens(page);
+    const esticadas = await page.evaluate(() => {
+      const texto = document.querySelector('.prosa > p')?.getBoundingClientRect().width ?? 0;
+      return [...document.querySelectorAll<HTMLImageElement>('.prosa img:not(.quadro img, .retrato)')]
+        .filter((i) => i.naturalWidth / i.naturalHeight < 1.3 && i.getBoundingClientRect().width > texto + 1)
+        .map((i) => i.getAttribute('src'));
+    });
+    expect(esticadas, `página "${p}"`).toEqual([]);
+  }
+});
