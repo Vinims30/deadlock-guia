@@ -5,6 +5,7 @@ import steamVent from '../assets/interface/tela-steam-vent.webp';
 import morcego from '../assets/interface/tela-morcego.webp';
 import orbeVerde from '../assets/interface/tela-orbe-verde.webp';
 import parry from '../assets/interface/tela-parry.webp';
+import loja from '../assets/interface/tela-loja.webp';
 import orbeLaranja from '../assets/interface/tela-orbe-laranja.webp';
 import pacoteMedico from '../assets/interface/tela-pacote-medico.webp';
 
@@ -91,6 +92,17 @@ export const telas = {
     imagem: parry,
     areas: {
       recarga: { x: 52, y: 52.4, l: 3.1, a: 5.8, elipse: true },
+    },
+  },
+  // A loja aberta, com as três abas e as faixas de 800 e 1.600 souls
+  loja: {
+    imagem: loja,
+    areas: {
+      abas: { x: 36.4, y: 8.8, l: 54.6, a: 8.2 },
+      'preco-800': { x: 36.6, y: 20, l: 4, a: 3.6 },
+      'preco-1600': { x: 36.6, y: 50.5, l: 4.5, a: 3.6 },
+      filtros: { x: 36.6, y: 3.2, l: 54.6, a: 5.4 },
+      atributos: { x: 2.5, y: 70.5, l: 13.5, a: 8.5 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
