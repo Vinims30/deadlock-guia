@@ -2,6 +2,7 @@ import partida from '../assets/interface/tela-partida.webp';
 import inicio from '../assets/interface/tela-inicio.webp';
 import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
 import steamVent from '../assets/interface/tela-steam-vent.webp';
+import morcego from '../assets/interface/tela-morcego.webp';
 
 // Cada área é um retângulo em porcentagem da imagem:
 // x e y = canto superior esquerdo, l = largura, a = altura.
@@ -51,6 +52,13 @@ export const telas = {
     imagem: steamVent,
     areas: {
       'tough-crate': { x: 30, y: 32.5, l: 13, a: 20 },
+    },
+  },
+  // Beco em Greenwich com um Healing Bat voando
+  morcego: {
+    imagem: morcego,
+    areas: {
+      morcego: { x: 46.5, y: 42.5, l: 5, a: 10, elipse: true },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
