@@ -3,7 +3,6 @@ import inicio from '../assets/interface/tela-inicio.webp';
 import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
 import steamVent from '../assets/interface/tela-steam-vent.webp';
 import morcego from '../assets/interface/tela-morcego.webp';
-import wave from '../assets/interface/tela-wave.webp';
 import orbeVerde from '../assets/interface/tela-orbe-verde.webp';
 import orbeLaranja from '../assets/interface/tela-orbe-laranja.webp';
 import pacoteMedico from '../assets/interface/tela-pacote-medico.webp';
@@ -65,18 +64,11 @@ export const telas = {
       morcego: { x: 46.5, y: 42.5, l: 5, a: 10, elipse: true },
     },
   },
-  // Primeiras waves se encontrando em Broadway (0:43)
-  wave: {
-    imagem: wave,
-    areas: {
-      'souls-ganhas': { x: 45, y: 64.5, l: 4.8, a: 5.5 },
-    },
-  },
-  // Tiro acertando o orbe verde de uma tropa inimiga, nas docas de York
+  // Orbe verde de uma tropa inimiga, ainda flutuando (Sandbox)
   'orbe-verde': {
     imagem: orbeVerde,
     areas: {
-      orbe: { x: 58.5, y: 32, l: 7.5, a: 13 },
+      orbe: { x: 47.9, y: 35.6, l: 3.6, a: 6.6, elipse: true },
     },
   },
   // Orbe laranja de uma tropa aliada, nas docas de York
