@@ -4,6 +4,7 @@ import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
 import steamVent from '../assets/interface/tela-steam-vent.webp';
 import morcego from '../assets/interface/tela-morcego.webp';
 import orbeVerde from '../assets/interface/tela-orbe-verde.webp';
+import parry from '../assets/interface/tela-parry.webp';
 import orbeLaranja from '../assets/interface/tela-orbe-laranja.webp';
 import pacoteMedico from '../assets/interface/tela-pacote-medico.webp';
 
@@ -83,6 +84,13 @@ export const telas = {
     imagem: pacoteMedico,
     areas: {
       pacote: { x: 53.5, y: 30, l: 3.8, a: 18.5 },
+    },
+  },
+  // Parry no Sandbox, com o ícone de recarga ao lado da mira
+  parry: {
+    imagem: parry,
+    areas: {
+      recarga: { x: 52, y: 52.4, l: 3.1, a: 5.8, elipse: true },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
