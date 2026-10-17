@@ -1,14 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { writeFileSync, rmSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { COPIA_DEV } from './copia';
 
-// Testes do servidor de desenvolvimento (npm run dev), que roda na porta 4323.
+// Testes do servidor de desenvolvimento (npm run dev), que roda na porta 4323,
+// numa cópia do projeto (veja tests/copia.ts). Os arquivos são criados na cópia.
 //
 // Bug: ao trocar um capítulo .md por um .mdx com o mesmo nome, a página dava
 // 404 no servidor de desenvolvimento e não voltava sozinha (o site gerado
 // ficava certo). A correção é o plugin recarregarCapituloTrocado no astro.config.mjs.
 
 const DEV = 'http://localhost:4323/deadlock-guia/';
-const BASE = 'src/content/capitulos/08-glossario/99-teste-automatico';
+const BASE = join(COPIA_DEV, 'src/content/capitulos/08-glossario/99-teste-automatico');
 const URL = `${DEV}glossario/teste-automatico`;
 const conteudo = (texto: string) => `---\ntitulo: "Teste automático"\n---\n\n${texto}\n`;
 

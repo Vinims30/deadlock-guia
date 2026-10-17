@@ -1,7 +1,9 @@
 import { defineConfig } from '@playwright/test';
+import { COPIA_PREVIEW, COPIA_DEV } from './tests/copia';
 
 // Testes de regressão: cada teste em tests/ corresponde a um bug que já aconteceu.
 // Rodam contra o site gerado (npm run build), servido pelo astro preview.
+// Os dois servidores rodam numa cópia do projeto (veja tests/copia.ts).
 // Usa o Chromium instalado no sistema, sem baixar outro navegador.
 const chromium = process.env.CHROMIUM_PATH ?? '/usr/bin/chromium';
 
@@ -29,14 +31,14 @@ export default defineConfig({
   // (como o Claude Code); sem essas variáveis eles ficam em primeiro plano.
   webServer: [
     {
-      command: 'npm run build && env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro preview --port 4322',
+      command: `node tests/copiar-projeto.mjs ${COPIA_PREVIEW} && cd ${COPIA_PREVIEW} && npx astro build && env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro preview --port 4322`,
       url: 'http://localhost:4322/deadlock-guia/',
       reuseExistingServer: false,
       timeout: 180_000,
     },
     {
       // Servidor de desenvolvimento separado, para não depender do npm run dev aberto
-      command: 'env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro dev --port 4323 --ignore-lock',
+      command: `node tests/copiar-projeto.mjs ${COPIA_DEV} && cd ${COPIA_DEV} && env -u CLAUDECODE -u CLAUDE_CODE_ENTRYPOINT -u AI_AGENT npx astro dev --port 4323 --ignore-lock`,
       url: 'http://localhost:4323/deadlock-guia/',
       reuseExistingServer: false,
       timeout: 120_000,
