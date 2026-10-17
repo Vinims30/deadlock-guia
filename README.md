@@ -2,6 +2,8 @@
 
 Um site-manual para ensinar Deadlock a quem nunca jogou um MOBA.
 
+**No ar em <https://vinims30.github.io/deadlock-guia/>.**
+
 O planejamento está em [`docs/PLANO.md`](docs/PLANO.md).
 
 ## Ver o site no computador
@@ -70,8 +72,6 @@ Os testes rodam numa **cópia do projeto** numa pasta temporária (`tests/copiar
 
 ## Publicação
 
-O repositório é privado por enquanto. Quando o site estiver pronto:
+O site está publicado no GitHub Pages: <https://vinims30.github.io/deadlock-guia/>.
 
-1. No GitHub, vá em **Settings → General → Change visibility** e deixe o repositório público.
-2. Vá em **Settings → Pages** e escolha **Source: GitHub Actions**.
-3. Envie qualquer mudança (ou rode o workflow "Publicar site" manualmente). O site fica em <https://vinims30.github.io/deadlock-guia/>.
+Toda mudança enviada para a branch `main` é publicada sozinha pelo workflow "Publicar site" (`.github/workflows/publicar.yml`), em um ou dois minutos. Para acompanhar, veja a aba **Actions** do repositório.
