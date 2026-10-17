@@ -103,6 +103,8 @@ export const telas = {
       'preco-1600': { x: 36.6, y: 50.5, l: 4.5, a: 3.6 },
       filtros: { x: 36.6, y: 3.2, l: 54.6, a: 5.4 },
       atributos: { x: 2.5, y: 70.5, l: 13.5, a: 8.5 },
+      imbue: { x: 54.8, y: 35, l: 4.1, a: 10.8 },
+      'compra-rapida': { x: 6, y: 4.5, l: 10, a: 6.5 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;

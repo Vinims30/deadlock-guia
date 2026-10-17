@@ -1,0 +1,73 @@
+---
+titulo: "A loja e os preços"
+resumo: "Faixas de preço, espaços de item, itens ativos, upgrades e como vender."
+---
+
+import Interface from '../../../components/Interface.astro';
+
+Em *As três categorias* você viu como a loja se divide. Aqui estão as regras de compra: quanto custa cada item, quantos dá para carregar e o que fazer quando os espaços acabam.
+
+## As faixas de preço
+
+Todo item custa um de **quatro preços**, e todos os itens de uma faixa custam a mesma coisa:
+
+| Faixa | Preço |
+| --- | --- |
+| 1 | 800 souls |
+| 2 | 1.600 souls |
+| 3 | 3.200 souls |
+| 4 | 6.400 souls |
+
+Na loja, cada faixa aparece com o preço em cima:
+
+<Interface tela="loja" destaque="preco-800" legenda="A faixa de 800 souls, a primeira da loja" />
+
+Os itens de 800 são fracos, mas baratos: são os que você compra na primeira volta para a base. Os de 6.400 são os mais fortes do jogo e só aparecem no fim da partida.
+
+## Upgrades: um item vira outro
+
+Alguns itens das faixas mais caras são a **versão melhorada** de um item mais barato. Quando você compra a versão melhorada, o item barato **some** e o preço dele é **descontado** do novo.
+
+Por exemplo: o **Extra Spirit** custa 800. O **Improved Spirit**, que é a versão melhorada, custa 1.600. Se você já tem o Extra Spirit, paga só os 800 que faltam, e o Extra Spirit dá lugar ao Improved Spirit.
+
+Por isso, comprar itens baratos no começo **não é desperdício**: muitos deles viram parte de um item maior depois.
+
+## Os espaços de item
+
+Você começa com **9 espaços** de item, para qualquer item de qualquer preço. Além deles, existem **3 espaços extras**, com cadeado, que o time inteiro libera ao derrubar os **Walkers** inimigos (veja *Como se ganha*):
+
+<Interface destaque="itens" legenda="Os espaços de item. Os com cadeado são os extras, liberados pelos Walkers" />
+
+Quando os espaços acabam, para comprar um item novo você precisa **vender** um antigo. No fim da partida, é normal trocar os itens baratos do começo por itens caros.
+
+## Itens ativos
+
+A maioria dos itens é **passiva**: funciona sozinha. Alguns são **ativos**: têm um efeito que você aciona com uma tecla, como uma cura, um escudo ou um impulso. Na loja, os itens ativos têm os **cantos arredondados**.
+
+- Você pode ter **no máximo 4** itens ativos.
+- Eles usam as teclas <kbd>Z</kbd> <kbd>X</kbd> <kbd>C</kbd> <kbd>V</kbd> e aparecem ao lado das habilidades (veja *Controles e interface*).
+- Para trocar a tecla de um item ativo, segure <kbd>Tab</kbd> e arraste o item para outro espaço.
+
+## Itens que melhoram uma habilidade: imbue
+
+Alguns itens têm a etiqueta **IMBUE**. Eles não melhoram o herói todo: melhoram **uma habilidade só**, que você escolhe na hora da compra.
+
+<Interface tela="loja" destaque="imbue" legenda="Um item com a etiqueta IMBUE na loja" />
+
+Escolha a habilidade que você mais usa. Para trocar depois, só vendendo e comprando de novo.
+
+## Vender
+
+- Vender um item devolve **metade** do preço.
+- **Exceção:** se você vender **antes de sair da área da loja**, recebe **tudo de volta**. Comprou errado? Venda na hora.
+- Vender também tira o **bônus por investir** daquelas souls (veja *As três categorias*).
+
+## Dicas para comprar
+
+- **Gaste as souls.** Souls paradas não fazem nada por você. Toda vez que voltar para a base, compre alguma coisa.
+- **Use a compra rápida.** No canto da loja fica a **Quick Buy**: coloque ali os próximos itens que você quer, e compre de uma vez quando tiver souls.
+
+<Interface tela="loja" destaque="compra-rapida" legenda="A Quick Buy, no canto da loja" />
+
+- **Use as builds prontas e os itens populares.** A loja mostra os itens que mais gente compra com o seu herói, e dá para usar builds feitas por outros jogadores. Para quem está começando, é o jeito mais fácil de não se perder (veja *Pensando builds*).
+- **Leia o item antes de comprar.** Passe o mouse em cima para ver o que ele faz.
