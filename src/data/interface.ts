@@ -1,12 +1,14 @@
 import partida from '../assets/interface/tela-partida.webp';
 import inicio from '../assets/interface/tela-inicio.webp';
+import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
+import steamVent from '../assets/interface/tela-steam-vent.webp';
 
 // Cada área é um retângulo em porcentagem da imagem:
 // x e y = canto superior esquerdo, l = largura, a = altura.
 // "elipse: true" desenha um círculo em vez de um retângulo.
 export type Area = { x: number; y: number; l: number; a: number; elipse?: boolean };
 
-// Prints da tela do jogo usados no capítulo "Controles e interface".
+// Prints da tela do jogo com partes para destacar.
 export const telas = {
   // Partida aos 24 minutos, com tudo liberado
   partida: {
@@ -35,6 +37,20 @@ export const telas = {
       'barra-inimiga': { x: 65, y: 62.5, l: 11, a: 10.5 },
       'melhorar-habilidade': { x: 40, y: 84.5, l: 20, a: 15.5 },
       abates: { x: 0, y: 20, l: 14.5, a: 10 },
+    },
+  },
+  // Loja secreta embaixo de Chinatown, com uma estátua dourada ao fundo
+  'loja-secreta': {
+    imagem: lojaSecreta,
+    areas: {
+      estatua: { x: 71, y: 43.5, l: 4, a: 11 },
+    },
+  },
+  // Steam vent na Plaza, com uma Tough Crate do lado
+  'steam-vent': {
+    imagem: steamVent,
+    areas: {
+      'tough-crate': { x: 30, y: 32.5, l: 13, a: 20 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
