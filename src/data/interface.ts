@@ -3,6 +3,7 @@ import inicio from '../assets/interface/tela-inicio.webp';
 import lojaSecreta from '../assets/interface/tela-loja-secreta.webp';
 import steamVent from '../assets/interface/tela-steam-vent.webp';
 import morcego from '../assets/interface/tela-morcego.webp';
+import wave from '../assets/interface/tela-wave.webp';
 
 // Cada área é um retângulo em porcentagem da imagem:
 // x e y = canto superior esquerdo, l = largura, a = altura.
@@ -59,6 +60,13 @@ export const telas = {
     imagem: morcego,
     areas: {
       morcego: { x: 46.5, y: 42.5, l: 5, a: 10, elipse: true },
+    },
+  },
+  // Primeiras waves se encontrando em Broadway (0:43)
+  wave: {
+    imagem: wave,
+    areas: {
+      'souls-ganhas': { x: 45, y: 64.5, l: 4.8, a: 5.5 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
