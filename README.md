@@ -62,7 +62,7 @@ import Pendente from '../../../components/Pendente.astro';
 npm test
 ```
 
-Gera o site, abre num Chromium de verdade e roda testes em todas as páginas. Cada teste corresponde a um bug que já aconteceu: páginas com erro, imagens quebradas, rolagem horizontal de 320px a 2560px, zoom das imagens (no computador e no celular), destaques sem zoom, imagens em branco com a placa de vídeo, avisos de pendência no site publicado, ícones de herói com zoom, imagens em pé esticadas na tela larga e capítulo que some no `npm run dev` ao trocar `.md` por `.mdx`.
+Gera o site, abre num Chromium de verdade e roda testes em todas as páginas. Cada teste corresponde a um bug que já aconteceu: páginas com erro, imagens quebradas, rolagem horizontal de 320px a 2560px, zoom das imagens (no computador e no celular), destaques sem zoom, imagens em branco com a placa de vídeo, avisos de pendência no site publicado, ícones de herói com zoom, imagens em pé esticadas na tela larga capítulo que some no `npm run dev` ao trocar `.md` por `.mdx` e capítulos citando outros por um nome que não existe ("veja *Título*").
 
 Os testes rodam numa **cópia do projeto** numa pasta temporária (`tests/copiar-projeto.mjs`), então dá para rodar com o `npm run dev` aberto sem um atrapalhar o outro.
 

@@ -6,6 +6,7 @@ import morcego from '../assets/interface/tela-morcego.webp';
 import orbeVerde from '../assets/interface/tela-orbe-verde.webp';
 import parry from '../assets/interface/tela-parry.webp';
 import loja from '../assets/interface/tela-loja.webp';
+import builds from '../assets/interface/tela-builds.webp';
 import orbeLaranja from '../assets/interface/tela-orbe-laranja.webp';
 import pacoteMedico from '../assets/interface/tela-pacote-medico.webp';
 
@@ -105,6 +106,14 @@ export const telas = {
       atributos: { x: 2.5, y: 70.5, l: 13.5, a: 8.5 },
       imbue: { x: 54.8, y: 35, l: 4.1, a: 10.8 },
       'compra-rapida': { x: 6, y: 4.5, l: 10, a: 6.5 },
+    },
+  },
+  // Tela Browse Builds, com as builds públicas da Violet
+  builds: {
+    imagem: builds,
+    areas: {
+      lista: { x: 10.8, y: 15.8, l: 40.2, a: 77.5 },
+      etapas: { x: 53.8, y: 46.8, l: 34.6, a: 45.5 },
     },
   },
 } satisfies Record<string, { imagem: ImageMetadata; areas: Record<string, Area> }>;
